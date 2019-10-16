@@ -91,6 +91,13 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         virtual void            NotifyRun();
 
                                 /**
+                                 * Implement the check for the AD.
+                                 * 0 = no ADC at all;
+                                 * 1 = ADC decision
+                                 */
+        virtual void            SetCheckAD( Int_t fFlagValue ){ fADcheck = fFlagValue; }
+
+                                /**
                                  * Use the class as a data member. It contains
                                  * the cuts for the muon track.
                                  */
@@ -110,6 +117,11 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  * systematics.
                                  */
         TList*                  fOutputList;        //!
+
+                                /**
+                                 * Switch for the AD analysis.
+                                 */
+        Int_t                   fADcheck;           //!
 
                                 /**
                                  * Utility type histo. It counts the GOOD muons
