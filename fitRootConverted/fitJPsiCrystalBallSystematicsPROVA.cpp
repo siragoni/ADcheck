@@ -450,13 +450,12 @@ void fitJPsiTemplate(const char* AnalysisName, const int selectionFlag, const in
   TFile* fileList = new TFile(AnalysisName);
   TDirectory* dir = fileList->GetDirectory("MyTask");
   TList* listings;
-  // dir->GetObject("MyOutputContainer", listings);
   dir->GetObject("ADcheck_", listings);
 
   // TFile* EvgenyFile = new TFile("fitM.root");
 
   TH1F *fInvariantMassDistributionH = 0x0;
-  if      ( selectionFlag == 0 ) fInvariantMassDistributionH = (TH1F*)listings->FindObject("fInvariantMassDistributionH");
+  if      ( selectionFlag == 0 ) fInvariantMassDistributionH = (TH1F*)listings->FindObject("fInvariantMassDistributionCoherentH");
   else if ( selectionFlag == 1 ) {
     if      ( selectionFlag2 == 0 ) fInvariantMassDistributionH = (TH1F*)listings->FindObject("fInvariantMassDistributionCoherentH");
     else if ( selectionFlag2 == 1 ) fInvariantMassDistributionH = (TH1F*)listings->FindObject("fInvariantMassDistributionCoherentRapidityBinsH_0");
