@@ -176,10 +176,10 @@ void runAnalysis(Int_t opt)
       	}
         // number of files per subjob
         alienHandler->SetSplitMaxInputFileNumber(1);
-        alienHandler->SetExecutable("myTask.sh");
+        alienHandler->SetExecutable("AD_XNXN.sh");
         // specify how many seconds your job may take
         alienHandler->SetTTL(10000);
-        alienHandler->SetJDLName("myTask.jdl");
+        alienHandler->SetJDLName("AD_XNXN.jdl");
 
         alienHandler->SetOutputToRunNo(kTRUE);
         alienHandler->SetKeepLogs(kTRUE);
@@ -201,7 +201,7 @@ void runAnalysis(Int_t opt)
         // alienHandler->SetGridWorkingDir("myWorkingDir");
         // alienHandler->SetGridWorkingDir("CheckAD_null");
         // alienHandler->SetGridWorkingDir("AD_HWandSW");
-        alienHandler->SetGridWorkingDir("PbPb18q_NoAD_2911");
+        alienHandler->SetGridWorkingDir("PbPb18q_ADmultiplicity");
         // alienHandler->SetGridOutputDir("myOutputDir");
         if (opt == 0) alienHandler->SetGridOutputDir(LHC18q.Data());
         if (opt == 1) alienHandler->SetGridOutputDir(LHC18r.Data());

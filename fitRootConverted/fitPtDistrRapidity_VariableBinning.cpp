@@ -260,35 +260,35 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
        else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
   }
   else if ( selectionFlag == 1 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroHv2");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv2_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv2_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv2_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroHv2");
+       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroHv3");
+       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3_0");
+       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3_1");
+       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3_2");
+       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroHv3");
   }
   else if ( selectionFlag == 2 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyHv2");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv2_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv2_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv2_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyHv2");
+       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyHv3");
+       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv3_0");
+       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv3_1");
+       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv3_2");
+       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyHv3");
   }
   else if ( selectionFlag == 3 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroHv2");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv2_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv2_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv2_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroHv2");
+       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroHv3");
+       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv3_0");
+       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv3_1");
+       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv3_2");
+       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroHv3");
   }
   else if ( selectionFlag == 4 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyHv2");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv2_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv2_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv2_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyHv2");
+       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyHv3");
+       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv3_0");
+       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv3_1");
+       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv3_2");
+       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyHv3");
   }
   else                                 fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-  fDimuonPtDistributionDataH->Rebin(5);
+  // fDimuonPtDistributionDataH->Rebin(5);
   fDimuonPtDistributionDataH->Draw("PE");
 
 
@@ -317,7 +317,7 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   fDimuonPtDistributionDataCloneH->Fit(FitPtDistrPreliminary, "","", 1.5, 3.);
   // fDimuonPtDistributionDataCloneH->Fit(fModelForHighPtTailPreliminary, "","", 1.5, 3.);
   gStyle->SetOptFit(100);
-  // UtilityCanvas->SaveAs("UtilityCanvas.png");
+  // UtilityCanvas->SaveAs("UtilityCanvas_v3.png");
 
 
   new TCanvas;
@@ -585,38 +585,38 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   l->AddEntry(  fTwoGammaToMuMediumC, "Continuum  #gamma#gamma #rightarrow #mu#mu");
   l->Draw();
 
-  // gPad->SaveAs("pngResults/fitPtDistr.png", "RECREATE");
+  // gPad->SaveAs("pngResults/fitPtDistr_v3.png", "RECREATE");
   if        ( selectionFlag == 0 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrALL.png",    "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrALL.png",    "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrALL.png",    "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrALL.png",    "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistrALL.png",    "RECREATE");
+       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
+       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
+       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
+       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
+       else                            gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
   } else if ( selectionFlag == 1 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistr0N0N.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_0.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_1.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_2.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistr0N0N.png",   "RECREATE");
+       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_v3.png",   "RECREATE");
+       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_0_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_1_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_2_v3.png", "RECREATE");
+       else                            gPad->SaveAs("pngResults/fitPtDistr0N0N_v3.png",   "RECREATE");
   } else if ( selectionFlag == 2 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistr0NXN.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_0.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_1.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_2.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistr0NXN.png",   "RECREATE");
+       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_v3.png",   "RECREATE");
+       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_0_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_1_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_2_v3.png", "RECREATE");
+       else                            gPad->SaveAs("pngResults/fitPtDistr0NXN_v3.png",   "RECREATE");
   } else if ( selectionFlag == 3 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrXN0N.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_0.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_1.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_2.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistrXN0N.png",   "RECREATE");
+       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_v3.png",   "RECREATE");
+       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_0_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_1_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_2_v3.png", "RECREATE");
+       else                            gPad->SaveAs("pngResults/fitPtDistrXN0N_v3.png",   "RECREATE");
   } else if ( selectionFlag == 4 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrXNXN.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_0.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_1.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_2.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistrXN0N.png",   "RECREATE");
-  } else                               gPad->SaveAs("pngResults/fitPtDistrALL.png",    "RECREATE");
+       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_v3.png",   "RECREATE");
+       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_0_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_1_v3.png", "RECREATE");
+       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_2_v3.png", "RECREATE");
+       else                            gPad->SaveAs("pngResults/fitPtDistrXN0N_v3.png",   "RECREATE");
+  } else                               gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
 
 
 }

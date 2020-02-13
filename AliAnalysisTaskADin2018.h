@@ -785,11 +785,15 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  * NEW: v2 uses the isZNAfired() methods
                                  * instead of the threshold to extract the
                                  * numbers.
+                                 *
+                                 * NEW: v3 uses a variable binning...
                                  */
         TH1F*                   fDimuonPtDistributionZNCzeroZNAzeroH;                     //!
         TH1F*                   fDimuonPtDistributionZNCzeroZNAzeroShiftPlusOneH;         //!
         TH1F*                   fDimuonPtDistributionZNCzeroZNAzeroHv2;                   //!
         TH1F*                   fDimuonPtDistributionZNCzeroZNAzeroRapidityHv2[3];        //!
+        TH1F*                   fDimuonPtDistributionZNCzeroZNAzeroHv3;                   //!
+        TH1F*                   fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3[3];        //!
 
                                 /**
                                  * This histogram records the pt-ditribution
@@ -803,11 +807,15 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  * NEW: v2 uses the isZNAfired() methods
                                  * instead of the threshold to extract the
                                  * numbers.
+                                 *
+                                 * NEW: v3 uses a variable binning...
                                  */
         TH1F*                   fDimuonPtDistributionZNCzeroZNAanyH;                     //!
         TH1F*                   fDimuonPtDistributionZNCzeroZNAanyShiftPlusOneH;         //!
         TH1F*                   fDimuonPtDistributionZNCzeroZNAanyHv2;                   //!
         TH1F*                   fDimuonPtDistributionZNCzeroZNAanyRapidityHv2[3];        //!
+        TH1F*                   fDimuonPtDistributionZNCzeroZNAanyHv3;                   //!
+        TH1F*                   fDimuonPtDistributionZNCzeroZNAanyRapidityHv3[3];        //!
 
                                 /**
                                  * This histogram records the pt-ditribution
@@ -821,11 +829,15 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  * NEW: v2 uses the isZNAfired() methods
                                  * instead of the threshold to extract the
                                  * numbers.
+                                 *
+                                 * NEW: v3 uses a variable binning...
                                  */
         TH1F*                   fDimuonPtDistributionZNCanyZNAzeroH;                     //!
         TH1F*                   fDimuonPtDistributionZNCanyZNAzeroShiftPlusOneH;         //!
         TH1F*                   fDimuonPtDistributionZNCanyZNAzeroHv2;                   //!
         TH1F*                   fDimuonPtDistributionZNCanyZNAzeroRapidityHv2[3];        //!
+        TH1F*                   fDimuonPtDistributionZNCanyZNAzeroHv3;                   //!
+        TH1F*                   fDimuonPtDistributionZNCanyZNAzeroRapidityHv3[3];        //!
 
                                 /**
                                  * This histogram records the pt-ditribution
@@ -839,11 +851,15 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  * NEW: v2 uses the isZNAfired() methods
                                  * instead of the threshold to extract the
                                  * numbers.
+                                 *
+                                 * NEW: v3 uses a variable binning...
                                  */
         TH1F*                   fDimuonPtDistributionZNCanyZNAanyH;                     //!
         TH1F*                   fDimuonPtDistributionZNCanyZNAanyShiftPlusOneH;         //!
         TH1F*                   fDimuonPtDistributionZNCanyZNAanyHv2;                   //!
         TH1F*                   fDimuonPtDistributionZNCanyZNAanyRapidityHv2[3];        //!
+        TH1F*                   fDimuonPtDistributionZNCanyZNAanyHv3;                   //!
+        TH1F*                   fDimuonPtDistributionZNCanyZNAanyRapidityHv3[3];        //!
 
                                 /**
                                  * This histogram records the pt-ditribution
@@ -910,7 +926,31 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fDimuonPtDistributionIncoherentZNCanyZNAanyH;         //!
 
 
-
+        //_______________________________
+        // - AD charge / multiplicity
+        /* -
+         * - Checks needed to make sure
+         * - that the bkg is under control.
+         */
+                                /**
+                                 * Collected multiplicity in the AD
+                                 * per channel and neutron emission
+                                 * class, plus total.
+                                 */
+        TH1F*                   fADmultiplicityH[16];                  //!
+        TH1F*                   fADmultiplicity0N0NclassH[16];         //!
+        TH1F*                   fADmultiplicity0NXNclassH[16];         //!
+        TH1F*                   fADmultiplicityXN0NclassH[16];         //!
+        TH1F*                   fADmultiplicityXNXNclassH[16];         //!
+        TH1F*                   fADmultiplicity0N0NclassRapidityH[48]; //!
+        TH1F*                   fADmultiplicity0NXNclassRapidityH[48]; //!
+        TH1F*                   fADmultiplicityXN0NclassRapidityH[48]; //!
+        TH1F*                   fADmultiplicityXNXNclassRapidityH[48]; //!
+        TH1F*                   fADmultiplicityTotalH;                 //!
+        TH1F*                   fADmultiplicity0N0NclassTotalH;        //!
+        TH1F*                   fADmultiplicity0NXNclassTotalH;        //!
+        TH1F*                   fADmultiplicityXN0NclassTotalH;        //!
+        TH1F*                   fADmultiplicityXNXNclassTotalH;        //!
 
 
 
@@ -974,7 +1014,7 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
          * If I happen to encounter it again in the future, I will make sure to
          * record it!
          */
-        ClassDef(AliAnalysisTaskADin2018, 4);
+        ClassDef(AliAnalysisTaskADin2018, 6);
 };
 
 #endif
