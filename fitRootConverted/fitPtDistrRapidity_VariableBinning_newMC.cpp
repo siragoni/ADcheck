@@ -32,6 +32,16 @@ TH1F* fTwoGammaToMuMedium;
 TH1F* fTwoGammaToMuHigh;
 TH1F* fHighPtTail;
 TH1F* fHighPtTailPreliminary;
+
+TH1F* fCohJpsiToMuOrig;
+TH1F* fCohPsi2sToMuOrig;
+TH1F* fCohPsi2sToMuPiOrig;
+TH1F* fIncohJpsiToMuOrig;
+TH1F* fIncohPsi2sToMuOrig;
+TH1F* fIncohPsi2sToMuPiOrig;
+TH1F* fTwoGammaToMuMediumOrig;
+TH1F* fTwoGammaToMuHighOrig;
+
 //_____________________________________________________________________________
 /* - Fit function for the Pt plots.
  * - I am using simple ROOT to make gaussian fits to the plot.
@@ -117,14 +127,14 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   // fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fDimuonPtDistributionH");
   // fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fDimuonPtDistributionH");
   if        ( selectionFlag2 == 0 ) {
-    fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMuPi     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
-    fIncohJpsiToMu      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMu     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
+    fCohJpsiToMuOrig        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuOrig       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuPiOrig     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
+    fIncohJpsiToMuOrig      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuOrig     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuPiOrig   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuMediumOrig = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuHighOrig   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
   } else if ( selectionFlag2 == 1 ) {
     // fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionRapidityH_0");
     // fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionRapidityH_0");
@@ -134,14 +144,14 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
     // fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionRapidityH_0");
     // fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionRapidityH_0");
     // fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionRapidityH_0");
-    fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMuPi     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
-    fIncohJpsiToMu      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMu     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
+    fCohJpsiToMuOrig        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuOrig       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuPiOrig     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
+    fIncohJpsiToMuOrig      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuOrig     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuPiOrig   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuMediumOrig = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuHighOrig   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
   } else if ( selectionFlag2 == 2 ) {
     // fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionRapidityH_1");
     // fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionRapidityH_1");
@@ -151,14 +161,14 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
     // fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionRapidityH_1");
     // fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionRapidityH_1");
     // fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionRapidityH_1");
-    fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMuPi     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
-    fIncohJpsiToMu      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMu     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
+    fCohJpsiToMuOrig        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuOrig       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuPiOrig     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
+    fIncohJpsiToMuOrig      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuOrig     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuPiOrig   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuMediumOrig = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuHighOrig   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
   } else if ( selectionFlag2 == 3 ) {
     // fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionRapidityH_2");
     // fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionRapidityH_2");
@@ -168,14 +178,14 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
     // fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionRapidityH_2");
     // fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionRapidityH_2");
     // fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionRapidityH_2");
-    fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
-    fCohPsi2sToMuPi     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
-    fIncohJpsiToMu      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMu     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
-    fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
-    fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
+    fCohJpsiToMuOrig        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuOrig       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuPiOrig     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
+    fIncohJpsiToMuOrig      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuOrig     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuPiOrig   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuMediumOrig = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuHighOrig   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
   }
   /* - Rebin
      -
@@ -188,14 +198,112 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   // fIncohPsi2sToMuPi   -> Rebin(4);
   // fTwoGammaToMuMedium -> Rebin(4);
   // fTwoGammaToMuHigh   -> Rebin(4);
-  fCohJpsiToMu        -> Rebin(5);  // -> 25 MeV bins
-  fCohPsi2sToMu       -> Rebin(5);
-  fCohPsi2sToMuPi     -> Rebin(5);
-  fIncohJpsiToMu      -> Rebin(5);
-  fIncohPsi2sToMu     -> Rebin(5);
-  fIncohPsi2sToMuPi   -> Rebin(5);
-  fTwoGammaToMuMedium -> Rebin(5);
-  fTwoGammaToMuHigh   -> Rebin(5);
+  fCohJpsiToMuOrig        -> Rebin(5);  // -> 25 MeV bins
+  fCohPsi2sToMuOrig       -> Rebin(5);
+  fCohPsi2sToMuPiOrig     -> Rebin(5);
+  fIncohJpsiToMuOrig      -> Rebin(5);
+  fIncohPsi2sToMuOrig     -> Rebin(5);
+  fIncohPsi2sToMuPiOrig   -> Rebin(5);
+  fTwoGammaToMuMediumOrig -> Rebin(5);
+  fTwoGammaToMuHighOrig   -> Rebin(5);
+
+
+
+  Float_t PtBins[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
+                          0.200, 0.225, 0.250, 0.275, 0.350, 0.425, 0.500, 0.575,
+                          0.650, 0.725,
+                          0.800, 0.875, 0.950, 1.100, 1.250, 1.400, 1.600, 1.800,
+                          2.000, 2.500, 3.000, 3.500, 4.000, 5.000
+                        };
+  Int_t   PtBinNumber = sizeof(PtBins)/sizeof(Float_t) - 1; // or just = 9
+  fCohJpsiToMu        = new TH1F("fCohJpsiToMu",        "fCohJpsiToMu",        PtBinNumber, PtBins );
+  fCohPsi2sToMu       = new TH1F("fCohPsi2sToMu",       "fCohPsi2sToMu",       PtBinNumber, PtBins );
+  fCohPsi2sToMuPi     = new TH1F("fCohPsi2sToMuPi",     "fCohPsi2sToMuPi",     PtBinNumber, PtBins );
+  fIncohJpsiToMu      = new TH1F("fIncohJpsiToMu",      "fIncohJpsiToMu",      PtBinNumber, PtBins );
+  fIncohPsi2sToMu     = new TH1F("fIncohPsi2sToMu",     "fIncohPsi2sToMu",     PtBinNumber, PtBins );
+  fIncohPsi2sToMuPi   = new TH1F("fIncohPsi2sToMuPi",   "fIncohPsi2sToMuPi",   PtBinNumber, PtBins );
+  fTwoGammaToMuMedium = new TH1F("fTwoGammaToMuMedium", "fTwoGammaToMuMedium", PtBinNumber, PtBins );
+  fTwoGammaToMuHigh   = new TH1F("fTwoGammaToMuHigh",   "fTwoGammaToMuHigh",   PtBinNumber, PtBins );
+
+  Double_t BinCenter = 0;
+  for ( Int_t ibin = 1; ibin < fCohJpsiToMuOrig->GetNbinsX(); ibin++ ) {
+    BinCenter = ((TAxis*)fCohJpsiToMuOrig->GetXaxis())->GetBinCenter(ibin);
+    if ( BinCenter > PtBins[PtBinNumber-1] ) continue;
+    cout << "BinCenter = " << BinCenter << endl;
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fCohJpsiToMu->Fill( fCohJpsiToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fCohJpsiToMu->SetBinContent(ibinVariable+1, fCohJpsiToMu->GetBinContent(ibinVariable+1) + (fCohJpsiToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fCohPsi2sToMu->Fill( fCohPsi2sToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fCohPsi2sToMu->SetBinContent(ibinVariable+1, fCohPsi2sToMu->GetBinContent(ibinVariable+1) + (fCohPsi2sToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fCohPsi2sToMuPi->Fill( fCohPsi2sToMuPiOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fCohPsi2sToMuPi->SetBinContent(ibinVariable+1, fCohPsi2sToMuPi->GetBinContent(ibinVariable+1) + (fCohPsi2sToMuPiOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fIncohJpsiToMu->Fill( fIncohJpsiToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fIncohJpsiToMu->SetBinContent(ibinVariable+1, fIncohJpsiToMu->GetBinContent(ibinVariable+1) + (fIncohJpsiToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fIncohPsi2sToMu->Fill( fIncohPsi2sToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fIncohPsi2sToMu->SetBinContent(ibinVariable+1, fIncohPsi2sToMu->GetBinContent(ibinVariable+1) + (fIncohPsi2sToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fIncohPsi2sToMuPi->Fill( fIncohPsi2sToMuPiOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fIncohPsi2sToMuPi->SetBinContent(ibinVariable+1, fIncohPsi2sToMuPi->GetBinContent(ibinVariable+1) + (fIncohPsi2sToMuPiOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fTwoGammaToMuMedium->Fill( fTwoGammaToMuMediumOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fTwoGammaToMuMedium->SetBinContent(ibinVariable+1, fTwoGammaToMuMedium->GetBinContent(ibinVariable+1) + (fTwoGammaToMuMediumOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+      if ( BinCenter < PtBins[ibinVariable+1] ){
+        // fTwoGammaToMuHigh->Fill( fTwoGammaToMuHighOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        fTwoGammaToMuHigh->SetBinContent(ibinVariable+1, fTwoGammaToMuHigh->GetBinContent(ibinVariable+1) + (fTwoGammaToMuHighOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+        break;
+      }
+    }
+  }
+  // new TCanvas;
+  // fCohJpsiToMu        -> Draw();
+  // new TCanvas;
+  // fCohPsi2sToMu        -> Draw();
+  // new TCanvas;
+  // fCohPsi2sToMuPi        -> Draw();
+  // new TCanvas;
+  // fIncohJpsiToMu        -> Draw();
+  // new TCanvas;
+  // fIncohPsi2sToMu        -> Draw();
+  // new TCanvas;
+  // fIncohPsi2sToMuPi        -> Draw();
+  // new TCanvas;
+  // fTwoGammaToMuMedium        -> Draw();
+  // new TCanvas;
+  // fTwoGammaToMuHigh        -> Draw();
+  // new TCanvas;
 
   /* - Firstly we normalize the histograms.
      - Remember to always Sumw2()!!
@@ -250,17 +358,17 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   // }
   // Double_t Integral_fHighPtTail = fHighPtTail->Integral();
   // fHighPtTail->Scale( 1/Integral_fHighPtTail );
-  Float_t PtBins[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
+  Float_t PtBins2[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
                           0.200, 0.225, 0.250, 0.275, 0.350, 0.425, 0.500, 0.575,
                           0.650, 0.725,
                           0.800, 0.875, 0.950, 1.100, 1.250, 1.400, 1.600, 1.800,
                           2.000, 2.500, 3.000, 3.500, 4.000, 5.000
                         };
-  Int_t   PtBinNumber = sizeof(PtBins)/sizeof(Float_t) - 1; // or just = 9
-  fHighPtTail = new TH1F( "fHighPtTail", "fHighPtTail", PtBinNumber, PtBins );
+  Int_t   PtBinNumber2 = sizeof(PtBins2)/sizeof(Float_t) - 1; // or just = 9
+  fHighPtTail = new TH1F( "fHighPtTail", "fHighPtTail", PtBinNumber2, PtBins2 );
   for (Int_t ibin=1; ibin<=fHighPtTail->GetNbinsX(); ibin++) {
     fHighPtTail->SetBinError(ibin,0);
-    fHighPtTail->SetBinContent(ibin,  fModelForHighPtTail->Integral(PtBins[ibin-1], PtBins[ibin])/(PtBins[ibin]-PtBins[ibin-1]));
+    fHighPtTail->SetBinContent(ibin,  fModelForHighPtTail->Integral(PtBins2[ibin-1], PtBins2[ibin])/(PtBins2[ibin]-PtBins2[ibin-1]));
   }
   Double_t Integral_fHighPtTail = fHighPtTail->Integral();
   fHighPtTail->Scale( 1/Integral_fHighPtTail );
@@ -563,8 +671,18 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   Double_t int1i = fIncohJpsiToMuC->IntegralAndError( 1, fCohJpsiToMuC->GetXaxis()->FindBin(0.2499999), err1i, "" );
   Double_t intun = fHighPtTailC   ->IntegralAndError( 1, fCohJpsiToMuC->GetXaxis()->FindBin(0.2499999), errun, "" );
   Double_t f_I   = (int1i + intun ) / int1c;
-  errfI          = err1c + err1i + errun;
-
+  // errfI          = err1c + err1i + errun;
+  Double_t RatioErrfIOverfI        = 0;
+  Double_t RatioErr1cOver1c        = 0;
+  Double_t RatioErrIncohOverIncoh  = 0;
+  RatioErr1cOver1c                 = err1c / int1c;
+  RatioErrIncohOverIncoh           = ( err1i + errun ) / ( int1i + intun );
+  RatioErrfIOverfI          = RatioErrIncohOverIncoh + RatioErr1cOver1c;
+  errfI          = RatioErrfIOverfI * f_I;
+  cout << "err1c = " << err1c;
+  cout << "err1i = " << err1i;
+  cout << "errun = " << errun;
+  cout << "errfI = " << errfI;
 
   TLatex* latex = new TLatex();
   latex->SetTextSize(0.05);
@@ -573,7 +691,7 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   latex->SetNDC();
   latex->DrawLatex(0.17,0.94,"ALICE Performance, PbPb #sqrt{s_{NN}} = 5.02 TeV");
   // latex->DrawLatex(0.17,0.86,Form("f_{I} = #frac{%.3f + %.3f}{%.3f} = %.3f ", int1i, intun, int1c, f_I));
-  latex->DrawLatex(0.17,0.86,Form("f_{I} = #frac{%.3f + %.3f}{%.3f} = %.3f #pm %.3f", int1i, intun, int1c, f_I, errfI));
+  latex->DrawLatex(0.17,0.86,Form("f_{I} = #frac{%.3f + %.3f}{%.3f} = %.3f #pm %.7f", int1i, intun, int1c, f_I, errfI));
   latex->SetTextSize(0.045);
   // latex->DrawLatex(0.55,0.84,"UPC, #it{L} = 235 ub^{-1}");
   // latex->DrawLatex(0.55,0.84,"UPC, LHC18q+LHC18r data");

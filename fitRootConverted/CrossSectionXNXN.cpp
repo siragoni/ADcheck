@@ -32,15 +32,24 @@ void CrossSectionXNXN(){
   Double_t DSigmaDyXN0N[3]  = { 0,0,0};
   Double_t DSigmaDyXNXN[3]  = { 0,0,0};
   Double_t fI[3]            = { 0.0595, 0.056,  0.041 };
-  Double_t fI0N0N[3]        = { 0.0430, 0.027,  0.043 };
-  Double_t fI0NXN[3]        = { 0.0840, 0.084,  0.084 };
-  Double_t fIXN0N[3]        = { 5.6430, 2.335,  1.511 };
-  Double_t fIXNXN[3]        = { 0.5000, 0.485,  0.500 };
+  // Double_t fI0N0N[3]        = { 0.0430, 0.027,  0.043 };
+  // Double_t fI0NXN[3]        = { 0.0840, 0.084,  0.084 };
+  // Double_t fIXN0N[3]        = { 5.6430, 2.335,  1.511 };
+  // Double_t fIXNXN[3]        = { 0.5000, 0.485,  0.500 };
+  Double_t fI0N0N[3]        = { 0.008, 0.009, 0.010 };
+  Double_t fI0NXN[3]        = { 0.033, 0.039, 0.061 };
+  Double_t fIXN0N[3]        = { 1.648, 0.817, 0.424 };
+  Double_t fIXNXN[3]        = { 0.198, 0.129, 0.087 };
+  Double_t errfI0N0N[3]     = { 0.0000016, 0.0000022, 0.0000024 };
+  Double_t errfI0NXN[3]     = { 0.0000087, 0.0000102, 0.0000174 };
+  Double_t errfIXN0N[3]     = { 0.0002170, 0.0001043, 0.0000425 };
+  Double_t errfIXNXN[3]     = { 0.0000198, 0.0000185, 0.0000133 };
+
   Double_t fD               = 0.055;
   Double_t eJPsi[3]         = { (0.051 + 0.140)*0.5, (0.204 + 0.191)*0.5, (0.119 + 0.029)*0.5 };
   Double_t LUMI             = 532.926;
   Double_t BR               = 0.05961;
-  Double_t NumOfJPsi0N0N[3] = { 2361, 6988, 2872 };
+  Double_t NumOfJPsi0N0N[3] = { 2355, 6966, 2871 };
   Double_t NumOfJPsi0NXN[3] = {  185,  630,  315 };
   Double_t NumOfJPsiXN0N[3] = {  327,  937,  468 };
   Double_t NumOfJPsiXNXN[3] = {  109,  444,  242 };
@@ -57,33 +66,49 @@ void CrossSectionXNXN(){
   }
 
   Double_t x1[3]          = { -4+1*(4-2.5)/6, -4+3*(4-2.5)/6, -4+5*(4-2.5)/6    };
-  Double_t y1Error0N0N[3] = { // 83 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              // 119/( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              // 98 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
-                              72 /( (1+fI0N0N[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              119/( (1+fI0N0N[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              98 /( (1+fI0N0N[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  // Double_t y1Error0N0N[3] = { // 83 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 119/( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 98 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             72 /( (1+fI0N0N[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             100/( (1+fI0N0N[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             82 /( (1+fI0N0N[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             };
+  // Double_t y1Error0NXN[3] = { // 18 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 34 /( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 32 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             18 /( (1+fI0NXN[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             34 /( (1+fI0NXN[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             32 /( (1+fI0NXN[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             };
+  // Double_t y1ErrorXN0N[3] = { // 29 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 52 /( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 29 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             29 /( (1+fIXN0N[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             52 /( (1+fIXN0N[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             29 /( (1+fIXN0N[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             };
+  // Double_t y1ErrorXNXN[3] = { // 16 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 25 /( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             // 24 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             16 /( (1+fIXNXN[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
+  //                             25 /( (1+fIXNXN[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
+  //                             24 /( (1+fIXNXN[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  //                             };
+  Double_t y1Error0N0N[3] = { TMath::Sqrt( ( 72* 72/(2355*2355)) + (errfI0N0N[0]*errfI0N0N[0]/((1+fI0N0N[0]+fD)*(1+fI0N0N[0]+fD))) )*DSigmaDy0N0N[0],
+                              TMath::Sqrt( (100*100/(6966*6966)) + (errfI0N0N[1]*errfI0N0N[1]/((1+fI0N0N[1]+fD)*(1+fI0N0N[1]+fD))) )*DSigmaDy0N0N[1],
+                              TMath::Sqrt( ( 82* 82/(2871*2871)) + (errfI0N0N[2]*errfI0N0N[2]/((1+fI0N0N[2]+fD)*(1+fI0N0N[2]+fD))) )*DSigmaDy0N0N[2]
                               };
-  Double_t y1Error0NXN[3] = { // 18 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              // 34 /( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              // 32 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
-                              18 /( (1+fI0NXN[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              34 /( (1+fI0NXN[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              32 /( (1+fI0NXN[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  Double_t y1Error0NXN[3] = { TMath::Sqrt( ( 18* 18/( 185* 185)) + (errfI0NXN[0]*errfI0NXN[0]/((1+fI0NXN[0]+fD)*(1+fI0NXN[0]+fD))) )*DSigmaDy0NXN[0],
+                              TMath::Sqrt( ( 34* 34/( 630* 630)) + (errfI0NXN[1]*errfI0NXN[1]/((1+fI0NXN[1]+fD)*(1+fI0NXN[1]+fD))) )*DSigmaDy0NXN[1],
+                              TMath::Sqrt( ( 32* 32/( 315* 315)) + (errfI0NXN[2]*errfI0NXN[2]/((1+fI0NXN[2]+fD)*(1+fI0NXN[2]+fD))) )*DSigmaDy0NXN[2]
                               };
-  Double_t y1ErrorXN0N[3] = { // 29 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              // 52 /( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              // 29 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
-                              29 /( (1+fIXN0N[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              52 /( (1+fIXN0N[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              29 /( (1+fIXN0N[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  Double_t y1ErrorXN0N[3] = { TMath::Sqrt( ( 29* 29/( 327* 327)) + (errfIXN0N[0]*errfIXN0N[0]/((1+fIXN0N[0]+fD)*(1+fIXN0N[0]+fD))) )*DSigmaDyXN0N[0],
+                              TMath::Sqrt( ( 52* 52/( 937* 937)) + (errfIXN0N[1]*errfIXN0N[1]/((1+fIXN0N[1]+fD)*(1+fIXN0N[1]+fD))) )*DSigmaDyXN0N[1],
+                              TMath::Sqrt( ( 29* 29/( 468* 468)) + (errfIXN0N[2]*errfIXN0N[2]/((1+fIXN0N[2]+fD)*(1+fIXN0N[2]+fD))) )*DSigmaDyXN0N[2]
                               };
-  Double_t y1ErrorXNXN[3] = { // 16 /( (1+fI[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              // 25 /( (1+fI[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              // 24 /( (1+fI[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
-                              16 /( (1+fIXNXN[0]+fD)*eJPsi[0]*BR*LUMI*1.5*0.95*1000 ),
-                              25 /( (1+fIXNXN[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
-                              24 /( (1+fIXNXN[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
+  Double_t y1ErrorXNXN[3] = { TMath::Sqrt( ( 16* 16/( 109* 109)) + (errfIXNXN[0]*errfIXNXN[0]/((1+fIXNXN[0]+fD)*(1+fIXNXN[0]+fD))) )*DSigmaDyXNXN[0],
+                              TMath::Sqrt( ( 25* 25/( 444* 444)) + (errfIXNXN[1]*errfIXNXN[1]/((1+fIXNXN[1]+fD)*(1+fIXNXN[1]+fD))) )*DSigmaDyXNXN[1],
+                              TMath::Sqrt( ( 24* 24/( 242* 242)) + (errfIXNXN[2]*errfIXNXN[2]/((1+fIXNXN[2]+fD)*(1+fIXNXN[2]+fD))) )*DSigmaDyXNXN[2]
                               };
   Double_t x1Error[3]     = {  (4-2.5)/6, (4-2.5)/6, (4-2.5)/6 };
 

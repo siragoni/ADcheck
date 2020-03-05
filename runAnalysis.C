@@ -201,7 +201,7 @@ void runAnalysis(Int_t opt)
         // alienHandler->SetGridWorkingDir("myWorkingDir");
         // alienHandler->SetGridWorkingDir("CheckAD_null");
         // alienHandler->SetGridWorkingDir("AD_HWandSW");
-        alienHandler->SetGridWorkingDir("PbPb18q_ADmultiplicity");
+        alienHandler->SetGridWorkingDir("PbPb18r_ImprovedFits");
         // alienHandler->SetGridOutputDir("myOutputDir");
         if (opt == 0) alienHandler->SetGridOutputDir(LHC18q.Data());
         if (opt == 1) alienHandler->SetGridOutputDir(LHC18r.Data());
