@@ -457,12 +457,78 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
 
   Double_t kFeedDownCoherent = 0.05;     // neutral element
   Double_t kError            = 0.01;
-  FitPtDistr->SetParameter(4, kFeedDownCoherent);
-  FitPtDistr->SetParLimits(4, FitPtDistr->GetParameter(4)*(1-kError), FitPtDistr->GetParameter(4)*(1+kError));
+  FitPtDistr->FixParameter(4, kFeedDownCoherent);
+  // FitPtDistr->SetParameter(4, kFeedDownCoherent);
+  // FitPtDistr->SetParLimits(4, FitPtDistr->GetParameter(4)*(1-kError), FitPtDistr->GetParameter(4)*(1+kError));
 
 
-  FitPtDistr->SetParLimits(0, 0.00000000000000001, 99999999999);
-  FitPtDistr->SetParLimits(1, 0.00000000000000001, 99999999999);
+  // // FitPtDistr->SetParLimits(0, 0.00000000000000001, 99999999999);
+  // // FitPtDistr->SetParLimits(1, 0.00000000000000001, 99999999999);
+  // if ( selectionFlag == 1 || selectionFlag == 3 ) {
+  //   FitPtDistr->SetParLimits(0, 10, 10000);
+  // } else {
+  //   FitPtDistr->SetParLimits(0, 1, 1000);
+  // }
+  // // FitPtDistr->SetParLimits(1, 0.1, 10000);
+
+
+
+  if        ( selectionFlag  == 1 ) { // 0N0N
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(0, 9450 );
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(0, 1856 );
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(0, 5336 );
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(0, 2230 );
+    else                            FitPtDistr->SetParameter(0, 9450 );
+  } else if ( selectionFlag  == 2 ) { // 0NXN
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(0,  864 );
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(0,  135 );
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(0,  484 );
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(0,  232 );
+    else                            FitPtDistr->SetParameter(0,  864 );
+  } else if ( selectionFlag  == 3 ) {
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(0,  810 );
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(0,   97 );
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(0,  430 );
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(0,  265 );
+    else                            FitPtDistr->SetParameter(0,  810 );
+  } else if ( selectionFlag  == 4 ) {
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(0,  592 );
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(0,   65 );
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(0,  316 );
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(0,  187 );
+    else                            FitPtDistr->SetParameter(0,  592 );
+  }
+
+  FitPtDistr->SetParLimits(0, FitPtDistr->GetParameter(0)*0.8, FitPtDistr->GetParameter(0)*1.2);
+
+  if        ( selectionFlag  == 1 ) { // 0N0N
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParLimits(1, 110, 200);
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParLimits(1,  10,  30);
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParLimits(1,  50,  80);
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParLimits(1,  25,  45);
+    else                            FitPtDistr->SetParLimits(1, 0.1, 100);
+  } else if ( selectionFlag  == 2 ) { // 0NXN
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParLimits(1,  70, 100);
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParLimits(1,   1,  30);
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParLimits(1,  30,  70);
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParLimits(1,  10,  50);
+    else                            FitPtDistr->SetParLimits(1, 0.1, 100);
+  } else if ( selectionFlag  == 3 ) {
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParLimits(1,  90, 150);
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParLimits(1,  40,  70);
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParLimits(1,  70, 100);
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParLimits(1,  25,  45);
+    else                            FitPtDistr->SetParLimits(1, 0.1, 100);
+  } else if ( selectionFlag  == 4 ) {
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParLimits(1,   1,  40);
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParLimits(1,   1,  40);
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParLimits(1,   1,  40);
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParLimits(1,   1,  40);
+    else                            FitPtDistr->SetParLimits(1, 0.1, 100);
+  }
+
+
+
 
   // FEED-DOWN COHERENT
   // Double_t kFeedDownIncoherent = 1705;     // neutral element
@@ -473,46 +539,90 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   // Gamma+Gamma Medium
   // FitPtDistr->SetParameter(2, 4800);
   // FitPtDistr->SetParameter(2, 6531);
+  // if        ( selectionFlag == 0 ) {
+  //   // FitPtDistr->SetParameter(2, 6531);  //2018
+  //   // FitPtDistr->SetParameter(2, 9035);  //2018+2015 with SPD
+  //   FitPtDistr->SetParameter(2, 11000);  //2018+2015 no SPD
+  // } else if ( selectionFlag == 1 ) { // 0N0N
+  //   // FitPtDistr->SetParameter(2, 5213);  //2018
+  //   // FitPtDistr->SetParameter(2, 7754);  //2018+2015 with SPD
+  //   if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 6460);          //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 6460 * 0.165);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 6460 * 0.572);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 6460 * 0.263);  //2018 no SPD, no AD
+  //   else                            FitPtDistr->SetParameter(2, 6460);          //2018 no SPD, no AD
+  // } else if ( selectionFlag == 2 ) { // 0NXN
+  //   // FitPtDistr->SetParameter(2,  370);  //2018
+  //   // FitPtDistr->SetParameter(2,  439);  //2018+2015 with SPD
+  //   if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 512);          //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 512 * 0.151);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 512 * 0.528);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 512 * 0.321);  //2018 no SPD, no AD
+  //   else                            FitPtDistr->SetParameter(2, 512);          //2018 no SPD, no AD
+  // } else if ( selectionFlag == 3 ) {
+  //   // FitPtDistr->SetParameter(2,  470);  //2018
+  //   // FitPtDistr->SetParameter(2,  543);  //2018+2015 with SPD
+  //   if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 647);          //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 647 * 0.165);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 647 * 0.573);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 647 * 0.262);  //2018 no SPD, no AD
+  //   else                            FitPtDistr->SetParameter(2, 647);          //2018 no SPD, no AD
+  // } else if ( selectionFlag == 4 ) {
+  //   // FitPtDistr->SetParameter(2,  140);  //2018
+  //   // FitPtDistr->SetParameter(2,  145);  //2018+2015 with SPD
+  //   if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 258);          //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 258 * 0.107);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 258 * 0.613);  //2018 no SPD, no AD
+  //   else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 258 * 0.280);  //2018 no SPD, no AD
+  //   else                            FitPtDistr->SetParameter(2, 258);          //2018 no SPD, no AD
+  // }
+
+  // // FitPtDistr->FixParameter(2, 0);
+  // if ( selectionFlag == 1 ) {
+  //   FitPtDistr->SetParLimits(2, FitPtDistr->GetParameter(2)*0.6, FitPtDistr->GetParameter(2)*1.4);
+  // } else {
+  //   FitPtDistr->SetParLimits(2, FitPtDistr->GetParameter(2)*0.6, FitPtDistr->GetParameter(2)*1.4);
+  // }
+
   if        ( selectionFlag == 0 ) {
     // FitPtDistr->SetParameter(2, 6531);  //2018
     // FitPtDistr->SetParameter(2, 9035);  //2018+2015 with SPD
-    FitPtDistr->SetParameter(2, 11000);  //2018+2015 no SPD
+    FitPtDistr->FixParameter(2, 11000);  //2018+2015 no SPD
   } else if ( selectionFlag == 1 ) { // 0N0N
     // FitPtDistr->SetParameter(2, 5213);  //2018
     // FitPtDistr->SetParameter(2, 7754);  //2018+2015 with SPD
-    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 6460);          //2018 no SPD, no AD
-    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 6460 * 0.165);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 6460 * 0.572);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 6460 * 0.263);  //2018 no SPD, no AD
-    else                            FitPtDistr->SetParameter(2, 6460);          //2018 no SPD, no AD
+    if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 6460);          //2018 no SPD, no AD
+    else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 6460 * 0.165);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 6460 * 0.572);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 6460 * 0.263);  //2018 no SPD, no AD
+    else                            FitPtDistr->FixParameter(2, 6460);          //2018 no SPD, no AD
   } else if ( selectionFlag == 2 ) { // 0NXN
     // FitPtDistr->SetParameter(2,  370);  //2018
     // FitPtDistr->SetParameter(2,  439);  //2018+2015 with SPD
-    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 512);          //2018 no SPD, no AD
-    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 512 * 0.151);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 512 * 0.528);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 512 * 0.321);  //2018 no SPD, no AD
-    else                            FitPtDistr->SetParameter(2, 512);          //2018 no SPD, no AD
+    if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 512);          //2018 no SPD, no AD
+    else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 512 * 0.151);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 512 * 0.528);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 512 * 0.321);  //2018 no SPD, no AD
+    else                            FitPtDistr->FixParameter(2, 512);          //2018 no SPD, no AD
   } else if ( selectionFlag == 3 ) {
     // FitPtDistr->SetParameter(2,  470);  //2018
     // FitPtDistr->SetParameter(2,  543);  //2018+2015 with SPD
-    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 647);          //2018 no SPD, no AD
-    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 647 * 0.165);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 647 * 0.573);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 647 * 0.262);  //2018 no SPD, no AD
-    else                            FitPtDistr->SetParameter(2, 647);          //2018 no SPD, no AD
+    if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 647);          //2018 no SPD, no AD
+    else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 647 * 0.165);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 647 * 0.573);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 647 * 0.262);  //2018 no SPD, no AD
+    else                            FitPtDistr->FixParameter(2, 647);          //2018 no SPD, no AD
   } else if ( selectionFlag == 4 ) {
     // FitPtDistr->SetParameter(2,  140);  //2018
     // FitPtDistr->SetParameter(2,  145);  //2018+2015 with SPD
-    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 258);          //2018 no SPD, no AD
-    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 258 * 0.107);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(2, 258 * 0.613);  //2018 no SPD, no AD
-    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(2, 258 * 0.280);  //2018 no SPD, no AD
-    else                            FitPtDistr->SetParameter(2, 258);          //2018 no SPD, no AD
+    if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 258);          //2018 no SPD, no AD
+    else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 258 * 0.107);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 258 * 0.613);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 258 * 0.280);  //2018 no SPD, no AD
+    else                            FitPtDistr->FixParameter(2, 258);          //2018 no SPD, no AD
   }
 
-  // FitPtDistr->FixParameter(2, 0);
-  FitPtDistr->SetParLimits(2, FitPtDistr->GetParameter(2)*0.95, FitPtDistr->GetParameter(2)*1.05);
+
 
   // Unknown component
   // if        ( selectionFlag == 0 ) {
@@ -580,7 +690,7 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   fDimuonPtDistributionDataH->GetYaxis()->SetLabelFont(42);
   // fDimuonPtDistributionDataH->GetXaxis()->SetNdivisions(408);
   // fDimuonPtDistributionDataH->GetYaxis()->SetRangeUser(10, fDimuonPtDistributionDataH->GetMaximum()*10.);
-  fDimuonPtDistributionDataH->GetYaxis()->SetRangeUser(fDimuonPtDistributionDataH->GetMaximum()*0.0001, fDimuonPtDistributionDataH->GetMaximum()*10.);
+  fDimuonPtDistributionDataH->GetYaxis()->SetRangeUser(fDimuonPtDistributionDataH->GetMaximum()*0.0001, fDimuonPtDistributionDataH->GetMaximum()*1000.);
   // fDimuonPtDistributionDataH->GetXaxis()->SetRangeUser(0, 5.5);
   fDimuonPtDistributionDataH->GetXaxis()->SetRangeUser(0, 3);
   gPad ->SetLogy();
@@ -671,14 +781,23 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   Double_t int1i = fIncohJpsiToMuC->IntegralAndError( 1, fCohJpsiToMuC->GetXaxis()->FindBin(0.2499999), err1i, "" );
   Double_t intun = fHighPtTailC   ->IntegralAndError( 1, fCohJpsiToMuC->GetXaxis()->FindBin(0.2499999), errun, "" );
   Double_t f_I   = (int1i + intun ) / int1c;
+
+  // err1c *= (int1c * (FitPtDistr->GetParError(0)));
+  // err1i *= (int1i * (FitPtDistr->GetParError(1)));
+  // errun *= (intun * (FitPtDistr->GetParError(3)));
+  err1c += int1c * (FitPtDistr->GetParError(0) / FitPtDistr->GetParameter(0));
+  err1i += int1i * (FitPtDistr->GetParError(1) / FitPtDistr->GetParameter(1));
+  errun += intun * (FitPtDistr->GetParError(3) / FitPtDistr->GetParameter(3));
+
   // errfI          = err1c + err1i + errun;
   Double_t RatioErrfIOverfI        = 0;
   Double_t RatioErr1cOver1c        = 0;
   Double_t RatioErrIncohOverIncoh  = 0;
   RatioErr1cOver1c                 = err1c / int1c;
   RatioErrIncohOverIncoh           = ( err1i + errun ) / ( int1i + intun );
-  RatioErrfIOverfI          = RatioErrIncohOverIncoh + RatioErr1cOver1c;
-  errfI          = RatioErrfIOverfI * f_I;
+  RatioErrfIOverfI                 = RatioErrIncohOverIncoh + RatioErr1cOver1c;
+  errfI                            = RatioErrfIOverfI * f_I;
+  // errfI          = (RatioErrfIOverfI + (FitPtDistr->GetParError(0) / FitPtDistr->GetParameter(0)) + (FitPtDistr->GetParError(1) / FitPtDistr->GetParameter(1)) + (FitPtDistr->GetParError(3) / FitPtDistr->GetParameter(3))) * f_I;
   cout << "err1c = " << err1c;
   cout << "err1i = " << err1i;
   cout << "errun = " << errun;
