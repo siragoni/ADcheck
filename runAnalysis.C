@@ -175,7 +175,7 @@ void runAnalysis(Int_t opt)
       	  cout << " not a valid option ... bye!" << endl;
       	}
         // number of files per subjob
-        alienHandler->SetSplitMaxInputFileNumber(1);
+        alienHandler->SetSplitMaxInputFileNumber(10);
         alienHandler->SetExecutable("AD_XNXN.sh");
         // specify how many seconds your job may take
         alienHandler->SetTTL(10000);
@@ -192,7 +192,7 @@ void runAnalysis(Int_t opt)
            -
          */
         alienHandler->SetMergeViaJDL(kFALSE);
-        alienHandler->SetMaxMergeStages(2);
+        alienHandler->SetMaxMergeStages(1);
 
 
         TString LHC18q("LHC18q");
@@ -201,7 +201,7 @@ void runAnalysis(Int_t opt)
         // alienHandler->SetGridWorkingDir("myWorkingDir");
         // alienHandler->SetGridWorkingDir("CheckAD_null");
         // alienHandler->SetGridWorkingDir("AD_HWandSW");
-        alienHandler->SetGridWorkingDir("PbPb18r_ImprovedFits");
+        alienHandler->SetGridWorkingDir("PbPb18r_CoherentCheck");
         // alienHandler->SetGridOutputDir("myOutputDir");
         if (opt == 0) alienHandler->SetGridOutputDir(LHC18q.Data());
         if (opt == 1) alienHandler->SetGridOutputDir(LHC18r.Data());

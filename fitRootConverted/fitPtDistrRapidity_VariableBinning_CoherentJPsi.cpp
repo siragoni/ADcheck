@@ -186,6 +186,23 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
     fIncohPsi2sToMuPiOrig   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
     fTwoGammaToMuMediumOrig = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
     fTwoGammaToMuHighOrig   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
+  } else {
+    // fCohJpsiToMu        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fCohPsi2sToMu       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fCohPsi2sToMuPi     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fIncohJpsiToMu      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fIncohPsi2sToMu     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fIncohPsi2sToMuPi   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fTwoGammaToMuMedium = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionRapidityH_2");
+    // fTwoGammaToMuHigh   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionRapidityH_2");
+    fCohJpsiToMuOrig        = (TH1F*)listingsMC[0]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuOrig       = (TH1F*)listingsMC[1]->FindObject("fTemplatePtDistributionH");
+    fCohPsi2sToMuPiOrig     = (TH1F*)listingsMC[2]->FindObject("fTemplatePtDistributionH");
+    fIncohJpsiToMuOrig      = (TH1F*)listingsMC[3]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuOrig     = (TH1F*)listingsMC[4]->FindObject("fTemplatePtDistributionH");
+    fIncohPsi2sToMuPiOrig   = (TH1F*)listingsMC[5]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuMediumOrig = (TH1F*)listingsMC[6]->FindObject("fTemplatePtDistributionH");
+    fTwoGammaToMuHighOrig   = (TH1F*)listingsMC[7]->FindObject("fTemplatePtDistributionH");
   }
   /* - Rebin
      -
@@ -378,39 +395,13 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
 
   TH1F *fDimuonPtDistributionDataH = 0x0;
   if      ( selectionFlag == 0 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-  }
-  else if ( selectionFlag == 1 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroHv3");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroRapidityHv3_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAzeroHv3");
-  }
-  else if ( selectionFlag == 2 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyHv3");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv3_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv3_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyRapidityHv3_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCzeroZNAanyHv3");
-  }
-  else if ( selectionFlag == 3 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroHv3");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv3_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv3_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroRapidityHv3_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAzeroHv3");
-  }
-  else if ( selectionFlag == 4 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyHv3");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv3_0");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv3_1");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyRapidityHv3_2");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionZNCanyZNAanyHv3");
+       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_0");
+       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_1");
+       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_2");
+       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_3");
+       else if ( selectionFlag2 == 4 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_4");
+       else if ( selectionFlag2 == 5 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_5");
+       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_0");
   }
   else                                 fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
   // fDimuonPtDistributionDataH->Rebin(5);
@@ -424,9 +415,10 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   fModelForHighPtTailPreliminary->SetParameter(0,1);
   // fModelForHighPtTailPreliminary->SetParameter(1,debug==4 ? 1.25 : 1.);
   // fModelForHighPtTailPreliminary->SetParameter(2,debug==4 ? 6.1 : 1.);
-  fModelForHighPtTailPreliminary->SetParameter(1, 1.6/*1.79*/);
-  // fModelForHighPtTailPreliminary->SetParameter(2, 3.58);
-  fModelForHighPtTailPreliminary->SetParameter(2, 6.1);
+  // fModelForHighPtTailPreliminary->SetParameter(1, 1.6);
+  fModelForHighPtTailPreliminary->SetParameter(1, 1.79);
+  fModelForHighPtTailPreliminary->SetParameter(2, 3.58);
+  // fModelForHighPtTailPreliminary->SetParameter(2, 6.1);
   fModelForHighPtTailPreliminary->SetNpx( fCohJpsiToMu->GetNbinsX() );
   fHighPtTailPreliminary = (TH1F*) fModelForHighPtTailPreliminary->GetHistogram()->Clone("fHighPtTailPreliminary");
   for (Int_t ibin=1; ibin<=fHighPtTailPreliminary->GetNbinsX(); ibin++) {
@@ -479,7 +471,14 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
 
 
 
-  if        ( selectionFlag  == 1 ) { // 0N0N
+  if        ( selectionFlag  == 0 ) { // COHERENT analysis
+    if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(0, 11716*0.043 );
+    else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(0, 11716*0.144 );
+    else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(0, 11716*0.271 );
+    else if ( selectionFlag2 == 3 ) FitPtDistr->SetParameter(0, 11716*0.293 );
+    else if ( selectionFlag2 == 4 ) FitPtDistr->SetParameter(0, 11716*0.194 );
+    else if ( selectionFlag2 == 5 ) FitPtDistr->SetParameter(0, 11716*0.051 );
+  } else if ( selectionFlag  == 1 ) { // 0N0N
     if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(0, 9450 );
     else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(0, 1856 );
     else if ( selectionFlag2 == 2 ) FitPtDistr->SetParameter(0, 5336 );
@@ -601,7 +600,13 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   if        ( selectionFlag == 0 ) {
     // FitPtDistr->SetParameter(2, 6531);  //2018
     // FitPtDistr->SetParameter(2, 9035);  //2018+2015 with SPD
-    FitPtDistr->FixParameter(2, 11000);  //2018+2015 no SPD
+    if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 7877 * 0.030);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 7877 * 0.132);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 7877 * 0.263);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 7877 * 0.308);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 4 ) FitPtDistr->FixParameter(2, 7877 * 0.211);  //2018 no SPD, no AD
+    else if ( selectionFlag2 == 5 ) FitPtDistr->FixParameter(2, 7877 * 0.059);  //2018 no SPD, no AD
+    else                            FitPtDistr->FixParameter(2, 7877);          //2018 no SPD, no AD
   } else if ( selectionFlag == 1 ) { // 0N0N
     // FitPtDistr->SetParameter(2, 5213);  //2018
     // FitPtDistr->SetParameter(2, 7754);  //2018+2015 with SPD

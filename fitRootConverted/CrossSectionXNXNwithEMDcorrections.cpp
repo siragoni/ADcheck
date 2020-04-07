@@ -32,18 +32,36 @@ void CrossSectionXNXNwithEMDcorrections(){
   Double_t DSigmaDyXN0N[3]  = { 0,0,0};
   Double_t DSigmaDyXNXN[3]  = { 0,0,0};
   Double_t fI[3]            = { 0.0595, 0.056,  0.041 };
-  // Double_t fI0N0N[3]        = { 0.0430, 0.027,  0.043 };
-  // Double_t fI0NXN[3]        = { 0.0840, 0.084,  0.084 };
-  // Double_t fIXN0N[3]        = { 5.6430, 2.335,  1.511 };
-  // Double_t fIXNXN[3]        = { 0.5000, 0.485,  0.500 };
-  Double_t fI0N0N[3]        = { 0.008, 0.009, 0.010 };
-  Double_t fI0NXN[3]        = { 0.033, 0.039, 0.061 };
-  Double_t fIXN0N[3]        = { 1.648, 0.817, 0.424 };
-  Double_t fIXNXN[3]        = { 0.198, 0.129, 0.087 };
-  Double_t errfI0N0N[3]     = { 0.0000016, 0.0000022, 0.0000024 };
-  Double_t errfI0NXN[3]     = { 0.0000087, 0.0000102, 0.0000174 };
-  Double_t errfIXN0N[3]     = { 0.0002170, 0.0001043, 0.0000425 };
-  Double_t errfIXNXN[3]     = { 0.0000198, 0.0000185, 0.0000133 };
+  // Double_t fI0N0N[3]        = { 0.0080, 0.0100, 0.0100 };
+  // Double_t fI0NXN[3]        = { 0.0340, 0.0400, 0.0640 };
+  // Double_t fIXN0N[3]        = { 1.7440, 0.7910, 0.4790 };
+  // Double_t fIXNXN[3]        = { 0.2080, 0.1320, 0.0800 };
+  // Double_t errfI0N0N[3]     = { 0.0046, 0.0025, 0.0038 };
+  // Double_t errfI0NXN[3]     = { 0.0025, 0.0109, 0.0216 };
+  // Double_t errfIXN0N[3]     = { 0.4339, 0.1007, 0.0730 };
+  // Double_t errfIXNXN[3]     = { 0.0632, 0.0349, 0.0359 };
+
+  // Perfect
+  // Double_t fI0N0N[3]        = { 0.0060, 0.0080, 0.0090 };
+  // Double_t fI0NXN[3]        = { 0.0360, 0.0460, 0.0690 };
+  // Double_t fIXN0N[3]        = { 2.5840, 1.0650, 0.5280 };
+  // Double_t fIXNXN[3]        = { 0.1960, 0.1630, 0.1050 };
+  // Double_t errfI0N0N[3]     = { 0.0019, 0.0017, 0.0025 };
+  // Double_t errfI0NXN[3]     = { 0.0216, 0.0104, 0.0194 };
+  // Double_t errfIXN0N[3]     = { 1.2846, 0.1399, 0.0923 };
+  // Double_t errfIXNXN[3]     = { 0.0881, 0.0337, 0.0336 };
+
+
+  // Sidebands
+  Double_t fI0N0N[3]        = { 0.0060, 0.0060, 0.0060 };
+  Double_t fI0NXN[3]        = { 0.0210, 0.0320, 0.0520 };
+  Double_t fIXN0N[3]        = { 1.6020, 0.6840, 0.3570 };
+  Double_t fIXNXN[3]        = { 0.1490, 0.1120, 0.0773 };
+  Double_t errfI0N0N[3]     = { 0.0019, 0.0005, 0.0009 };
+  Double_t errfI0NXN[3]     = { 0.0191, 0.0249, 0.0174 };
+  Double_t errfIXN0N[3]     = { 0.5834, 0.0738, 0.1116 };
+  Double_t errfIXNXN[3]     = { 0.0793, 0.0271, 0.0288 };
+
 
   Double_t fD               = 0.055;
   Double_t eJPsi[3]         = { (0.051 + 0.140)*0.5, (0.204 + 0.191)*0.5, (0.119 + 0.029)*0.5 };
@@ -143,23 +161,23 @@ void CrossSectionXNXNwithEMDcorrections(){
   //                             25 /( (1+fIXNXN[1]+fD)*eJPsi[1]*BR*LUMI*1.5*0.95*1000 ),
   //                             24 /( (1+fIXNXN[2]+fD)*eJPsi[2]*BR*LUMI*1.5*0.95*1000 )
   //                             };
-  Double_t y1Error0N0N[3] = { TMath::Sqrt( ( 72* 72/(2355*2355)) + (errfI0N0N[0]*errfI0N0N[0]/((1+fI0N0N[0]+fD)*(1+fI0N0N[0]+fD))) )*DSigmaDy0N0N[0],
-                              TMath::Sqrt( (100*100/(6966*6966)) + (errfI0N0N[1]*errfI0N0N[1]/((1+fI0N0N[1]+fD)*(1+fI0N0N[1]+fD))) )*DSigmaDy0N0N[1],
-                              TMath::Sqrt( ( 82* 82/(2871*2871)) + (errfI0N0N[2]*errfI0N0N[2]/((1+fI0N0N[2]+fD)*(1+fI0N0N[2]+fD))) )*DSigmaDy0N0N[2]
+  Double_t y1Error0N0N[3] = { TMath::Sqrt( ( 72.0* 72.0/(2355.0*2355.0)) + (errfI0N0N[0]*errfI0N0N[0]/((1+fI0N0N[0]+fD)*(1+fI0N0N[0]+fD))) )*DSigmaDy0N0N[0],
+                              TMath::Sqrt( (100.0*100.0/(6966.0*6966.0)) + (errfI0N0N[1]*errfI0N0N[1]/((1+fI0N0N[1]+fD)*(1+fI0N0N[1]+fD))) )*DSigmaDy0N0N[1],
+                              TMath::Sqrt( ( 82.0* 82.0/(2871.0*2871.0)) + (errfI0N0N[2]*errfI0N0N[2]/((1+fI0N0N[2]+fD)*(1+fI0N0N[2]+fD))) )*DSigmaDy0N0N[2]
                               };
-  Double_t y1Error0NXN[3] = { TMath::Sqrt( ( 18* 18/( 185* 185)) + (errfI0NXN[0]*errfI0NXN[0]/((1+fI0NXN[0]+fD)*(1+fI0NXN[0]+fD))) )*DSigmaDy0NXN[0],
-                              TMath::Sqrt( ( 34* 34/( 630* 630)) + (errfI0NXN[1]*errfI0NXN[1]/((1+fI0NXN[1]+fD)*(1+fI0NXN[1]+fD))) )*DSigmaDy0NXN[1],
-                              TMath::Sqrt( ( 32* 32/( 315* 315)) + (errfI0NXN[2]*errfI0NXN[2]/((1+fI0NXN[2]+fD)*(1+fI0NXN[2]+fD))) )*DSigmaDy0NXN[2]
+  Double_t y1Error0NXN[3] = { TMath::Sqrt( ( 18.0* 18.0/( 185.0* 185.0)) + (errfI0NXN[0]*errfI0NXN[0]/((1+fI0NXN[0]+fD)*(1+fI0NXN[0]+fD))) )*DSigmaDy0NXN[0],
+                              TMath::Sqrt( ( 34.0* 34.0/( 630.0* 630.0)) + (errfI0NXN[1]*errfI0NXN[1]/((1+fI0NXN[1]+fD)*(1+fI0NXN[1]+fD))) )*DSigmaDy0NXN[1],
+                              TMath::Sqrt( ( 32.0* 32.0/( 315.0* 315.0)) + (errfI0NXN[2]*errfI0NXN[2]/((1+fI0NXN[2]+fD)*(1+fI0NXN[2]+fD))) )*DSigmaDy0NXN[2]
                               };
-  Double_t y1ErrorXN0N[3] = { TMath::Sqrt( ( 29* 29/( 327* 327)) + (errfIXN0N[0]*errfIXN0N[0]/((1+fIXN0N[0]+fD)*(1+fIXN0N[0]+fD))) )*DSigmaDyXN0N[0],
-                              TMath::Sqrt( ( 52* 52/( 937* 937)) + (errfIXN0N[1]*errfIXN0N[1]/((1+fIXN0N[1]+fD)*(1+fIXN0N[1]+fD))) )*DSigmaDyXN0N[1],
-                              TMath::Sqrt( ( 29* 29/( 468* 468)) + (errfIXN0N[2]*errfIXN0N[2]/((1+fIXN0N[2]+fD)*(1+fIXN0N[2]+fD))) )*DSigmaDyXN0N[2]
+  Double_t y1ErrorXN0N[3] = { TMath::Sqrt( ( 29.0* 29.0/( 327.0* 327.0)) + (errfIXN0N[0]*errfIXN0N[0]/((1+fIXN0N[0]+fD)*(1+fIXN0N[0]+fD))) )*DSigmaDyXN0N[0],
+                              TMath::Sqrt( ( 52.0* 52.0/( 937.0* 937.0)) + (errfIXN0N[1]*errfIXN0N[1]/((1+fIXN0N[1]+fD)*(1+fIXN0N[1]+fD))) )*DSigmaDyXN0N[1],
+                              TMath::Sqrt( ( 29.0* 29.0/( 468.0* 468.0)) + (errfIXN0N[2]*errfIXN0N[2]/((1+fIXN0N[2]+fD)*(1+fIXN0N[2]+fD))) )*DSigmaDyXN0N[2]
                               };
-  Double_t y1ErrorXNXN[3] = { TMath::Sqrt( ( 16* 16/( 109* 109)) + (errfIXNXN[0]*errfIXNXN[0]/((1+fIXNXN[0]+fD)*(1+fIXNXN[0]+fD))) )*DSigmaDyXNXN[0],
-                              TMath::Sqrt( ( 25* 25/( 444* 444)) + (errfIXNXN[1]*errfIXNXN[1]/((1+fIXNXN[1]+fD)*(1+fIXNXN[1]+fD))) )*DSigmaDyXNXN[1],
-                              TMath::Sqrt( ( 24* 24/( 242* 242)) + (errfIXNXN[2]*errfIXNXN[2]/((1+fIXNXN[2]+fD)*(1+fIXNXN[2]+fD))) )*DSigmaDyXNXN[2]
+  Double_t y1ErrorXNXN[3] = { TMath::Sqrt( ( 16.0* 16.0/( 109.0* 109.0)) + (errfIXNXN[0]*errfIXNXN[0]/((1+fIXNXN[0]+fD)*(1+fIXNXN[0]+fD))) )*DSigmaDyXNXN[0],
+                              TMath::Sqrt( ( 25.0* 25.0/( 444.0* 444.0)) + (errfIXNXN[1]*errfIXNXN[1]/((1+fIXNXN[1]+fD)*(1+fIXNXN[1]+fD))) )*DSigmaDyXNXN[1],
+                              TMath::Sqrt( ( 24.0* 24.0/( 242.0* 242.0)) + (errfIXNXN[2]*errfIXNXN[2]/((1+fIXNXN[2]+fD)*(1+fIXNXN[2]+fD))) )*DSigmaDyXNXN[2]
                               };
-  Double_t x1Error[3]     = {  (4-2.5)/6, (4-2.5)/6, (4-2.5)/6 };
+  Double_t x1Error[3]     = {  (4.0-2.5)/6.0, (4.0-2.5)/6.0, (4.0-2.5)/6.0 };
 
   Coherent0N0N = new TGraphErrors(3, x1, DSigmaDy0N0N, x1Error, y1Error0N0N);
   Coherent0NXN = new TGraphErrors(3, x1, DSigmaDy0NXN, x1Error, y1Error0NXN);

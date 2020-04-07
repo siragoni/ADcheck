@@ -192,4 +192,13 @@ void lumiEvgenyStyle(TString className = "CMUP6-B-NOPF-MUFAST"){
   hLumiRecorded->Write();
   hLumiAnalysed->Write();
   f2->Close();
+
+  for( Int_t iBins = 1; iBins < hLumiAnalysed->GetNbinsX(); iBins++) {
+
+  // else if ( fRunNum == 246809 ) { fLumiPerRun = 2.47068;  }
+
+  cout << "else if ( fRunNum == "  << hLumiAnalysed->GetXaxis()->GetBinLabel(iBins);
+  cout << " ) { fLumiPerRun = " << hLumiAnalysed->GetBinContent(iBins) << "; }" << endl;
+}
+
 }
