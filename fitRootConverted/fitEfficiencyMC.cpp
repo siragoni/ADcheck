@@ -279,8 +279,8 @@ void SetLuminosityCap()
  */
 void fitEfficiencyMC(){
 
-  // TFile* fileList = new TFile("AnalysisResultsMCcohJPsiLHC18l7.root");        // same settings as polarisation analysis
-  TFile* fileList = new TFile("AnalysisResultsCoherentMC_ADrestrictions.root");  // same settings as CheckAD
+  // TFile* fileList = new TFile("MCtrainResults/2020-06-26/kCohJpsiToMu/AnalysisResults.root");  // same settings as CheckAD
+  TFile* fileList = new TFile("MCtrainResults/2020-06-26/kCohJpsiToMu/AnalysisResultsCoherentCMUP6.root");  // same settings as CheckAD
   TDirectory* dir = fileList->GetDirectory("MyTask");
   TList* listings;
   dir->GetObject("MyOutputContainer", listings);
@@ -296,16 +296,16 @@ void fitEfficiencyMC(){
    */
   // TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_0");
   // TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_0");
-  TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_1");
-  TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_1");
+  // TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_1");
+  // TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_1");
   // TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_2");
   // TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_2");
   // TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_3");
   // TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_3");
   // TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_4");
   // TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_4");
-  // TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_5");
-  // TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_5");
+  TH1F* fEfficiencyPerRunH   = (TH1F*)listings->FindObject("fEfficiencyPerRunRapidityH_5");
+  TH1F* fMCEfficiencyPerRunH = (TH1F*)listings->FindObject("fMCEfficiencyPerRunRapidityH_5");
 
   fEfficiencyPerRunH  ->Sumw2();
   fMCEfficiencyPerRunH->Sumw2();

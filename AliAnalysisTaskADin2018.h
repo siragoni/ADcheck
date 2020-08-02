@@ -330,6 +330,7 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fDimuonPtDistributionH;                     //!
         TH1F*                   fDimuonPtDistributionShiftPlusOneH;         //!
         TH1F*                   fDimuonPtDistributionRapidityHv3[6];        //!
+        TH1F*                   fDimuonPtDistributionRapidityH[6];          //!
 
 
         //_______________________________

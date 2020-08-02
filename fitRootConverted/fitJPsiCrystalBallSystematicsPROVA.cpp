@@ -450,7 +450,8 @@ void fitJPsiTemplate(const char* AnalysisName, const int selectionFlag, const in
   TFile* fileList = new TFile(AnalysisName);
   TDirectory* dir = fileList->GetDirectory("MyTask");
   TList* listings;
-  dir->GetObject("ADcheck_", listings);
+  // dir->GetObject("ADcheck_", listings);
+  dir->GetObject("MyOutputContainer", listings);
 
   // TFile* EvgenyFile = new TFile("fitM.root");
 
@@ -790,9 +791,8 @@ void fitJPsiTemplate(const char* AnalysisName, const int selectionFlag, const in
     numberOfTotalPsi2sErr = numberOfTotalPsi2s*fFitInvMass->GetParError(16)/fFitInvMass->GetParameter(16);
 
   // }
-  // numberOfTotalBkg = fTwoGammaFromModelH      -> Integral();
-  // numberOfTotalBkg = GammaGammaFit-> Integral(2.2,6,1.E-15);
-  numberOfTotalBkg    = (GammaGammaFit-> Integral(2.2,6))/0.05;
+  // numberOfTotalBkg    = (GammaGammaFit-> Integral(2.2,6))/0.05;
+  numberOfTotalBkg    = (GammaGammaFit-> Integral(2.85,3.35))/0.05;
   numberOfTotalBkgErr = numberOfTotalBkg*fFitInvMass->GetParError(17)/fFitInvMass->GetParameter(17);
   latex->DrawLatex(0.55,0.66,Form("N_{J/#psi} = %.0f #pm %.0f",        numberOfTotalJPsi,  numberOfTotalJPsiErr ));//fFitInvMass->GetParameter(0) *fFitInvMass->GetParError(15)/0.05 ) );
   latex->DrawLatex(0.55,0.60,Form("N_{#psi(2S)} = %.0f #pm %.0f",      numberOfTotalPsi2s, numberOfTotalPsi2sErr));//fFitInvMass->GetParameter(5) *fFitInvMass->GetParError(16)/0.05 ) );

@@ -225,85 +225,95 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   fTwoGammaToMuHighOrig   -> Rebin(5);
 
 
+  fCohJpsiToMu        = (TH1F*) fCohJpsiToMuOrig        -> Clone("fCohJpsiToMu");
+  fCohPsi2sToMu       = (TH1F*) fCohPsi2sToMuOrig       -> Clone("fCohPsi2sToMu");
+  fCohPsi2sToMuPi     = (TH1F*) fCohPsi2sToMuPiOrig     -> Clone("fCohPsi2sToMuPi");
+  fIncohJpsiToMu      = (TH1F*) fIncohJpsiToMuOrig      -> Clone("fIncohJpsiToMu");
+  fIncohPsi2sToMu     = (TH1F*) fIncohPsi2sToMuOrig     -> Clone("fIncohPsi2sToMu");
+  fIncohPsi2sToMuPi   = (TH1F*) fIncohPsi2sToMuPiOrig   -> Clone("fIncohPsi2sToMuPi");
+  fTwoGammaToMuMedium = (TH1F*) fTwoGammaToMuMediumOrig -> Clone("fTwoGammaToMuMedium");
+  fTwoGammaToMuHigh   = (TH1F*) fTwoGammaToMuHighOrig   -> Clone("fTwoGammaToMuHigh");
 
-  Float_t PtBins[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
-                          0.200, 0.225, 0.250, 0.275, 0.350, 0.425, 0.500, 0.575,
-                          0.650, 0.725,
-                          0.800, 0.875, 0.950, 1.100, 1.250, 1.400, 1.600, 1.800,
-                          2.000, 2.500, 3.000, 3.500, 4.000, 5.000
-                        };
-  Int_t   PtBinNumber = sizeof(PtBins)/sizeof(Float_t) - 1; // or just = 9
-  fCohJpsiToMu        = new TH1F("fCohJpsiToMu",        "fCohJpsiToMu",        PtBinNumber, PtBins );
-  fCohPsi2sToMu       = new TH1F("fCohPsi2sToMu",       "fCohPsi2sToMu",       PtBinNumber, PtBins );
-  fCohPsi2sToMuPi     = new TH1F("fCohPsi2sToMuPi",     "fCohPsi2sToMuPi",     PtBinNumber, PtBins );
-  fIncohJpsiToMu      = new TH1F("fIncohJpsiToMu",      "fIncohJpsiToMu",      PtBinNumber, PtBins );
-  fIncohPsi2sToMu     = new TH1F("fIncohPsi2sToMu",     "fIncohPsi2sToMu",     PtBinNumber, PtBins );
-  fIncohPsi2sToMuPi   = new TH1F("fIncohPsi2sToMuPi",   "fIncohPsi2sToMuPi",   PtBinNumber, PtBins );
-  fTwoGammaToMuMedium = new TH1F("fTwoGammaToMuMedium", "fTwoGammaToMuMedium", PtBinNumber, PtBins );
-  fTwoGammaToMuHigh   = new TH1F("fTwoGammaToMuHigh",   "fTwoGammaToMuHigh",   PtBinNumber, PtBins );
 
-  Double_t BinCenter = 0;
-  for ( Int_t ibin = 1; ibin < fCohJpsiToMuOrig->GetNbinsX(); ibin++ ) {
-    BinCenter = ((TAxis*)fCohJpsiToMuOrig->GetXaxis())->GetBinCenter(ibin);
-    if ( BinCenter > PtBins[PtBinNumber-1] ) continue;
-    cout << "BinCenter = " << BinCenter << endl;
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fCohJpsiToMu->Fill( fCohJpsiToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fCohJpsiToMu->SetBinContent(ibinVariable+1, fCohJpsiToMu->GetBinContent(ibinVariable+1) + (fCohJpsiToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fCohPsi2sToMu->Fill( fCohPsi2sToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fCohPsi2sToMu->SetBinContent(ibinVariable+1, fCohPsi2sToMu->GetBinContent(ibinVariable+1) + (fCohPsi2sToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fCohPsi2sToMuPi->Fill( fCohPsi2sToMuPiOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fCohPsi2sToMuPi->SetBinContent(ibinVariable+1, fCohPsi2sToMuPi->GetBinContent(ibinVariable+1) + (fCohPsi2sToMuPiOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fIncohJpsiToMu->Fill( fIncohJpsiToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fIncohJpsiToMu->SetBinContent(ibinVariable+1, fIncohJpsiToMu->GetBinContent(ibinVariable+1) + (fIncohJpsiToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fIncohPsi2sToMu->Fill( fIncohPsi2sToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fIncohPsi2sToMu->SetBinContent(ibinVariable+1, fIncohPsi2sToMu->GetBinContent(ibinVariable+1) + (fIncohPsi2sToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fIncohPsi2sToMuPi->Fill( fIncohPsi2sToMuPiOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fIncohPsi2sToMuPi->SetBinContent(ibinVariable+1, fIncohPsi2sToMuPi->GetBinContent(ibinVariable+1) + (fIncohPsi2sToMuPiOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fTwoGammaToMuMedium->Fill( fTwoGammaToMuMediumOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fTwoGammaToMuMedium->SetBinContent(ibinVariable+1, fTwoGammaToMuMedium->GetBinContent(ibinVariable+1) + (fTwoGammaToMuMediumOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-    for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
-      if ( BinCenter < PtBins[ibinVariable+1] ){
-        // fTwoGammaToMuHigh->Fill( fTwoGammaToMuHighOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        fTwoGammaToMuHigh->SetBinContent(ibinVariable+1, fTwoGammaToMuHigh->GetBinContent(ibinVariable+1) + (fTwoGammaToMuHighOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
-        break;
-      }
-    }
-  }
+
+  // Float_t PtBins[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
+  //                         0.200, 0.225, 0.250, 0.275, 0.350, 0.425, 0.500, 0.575,
+  //                         0.650, 0.725,
+  //                         0.800, 0.875, 0.950, 1.100, 1.250, 1.400, 1.600, 1.800,
+  //                         2.000, 2.500, 3.000, 3.500, 4.000, 5.000
+  //                       };
+  // Int_t   PtBinNumber = sizeof(PtBins)/sizeof(Float_t) - 1; // or just = 9
+  // fCohJpsiToMu        = new TH1F("fCohJpsiToMu",        "fCohJpsiToMu",        PtBinNumber, PtBins );
+  // fCohPsi2sToMu       = new TH1F("fCohPsi2sToMu",       "fCohPsi2sToMu",       PtBinNumber, PtBins );
+  // fCohPsi2sToMuPi     = new TH1F("fCohPsi2sToMuPi",     "fCohPsi2sToMuPi",     PtBinNumber, PtBins );
+  // fIncohJpsiToMu      = new TH1F("fIncohJpsiToMu",      "fIncohJpsiToMu",      PtBinNumber, PtBins );
+  // fIncohPsi2sToMu     = new TH1F("fIncohPsi2sToMu",     "fIncohPsi2sToMu",     PtBinNumber, PtBins );
+  // fIncohPsi2sToMuPi   = new TH1F("fIncohPsi2sToMuPi",   "fIncohPsi2sToMuPi",   PtBinNumber, PtBins );
+  // fTwoGammaToMuMedium = new TH1F("fTwoGammaToMuMedium", "fTwoGammaToMuMedium", PtBinNumber, PtBins );
+  // fTwoGammaToMuHigh   = new TH1F("fTwoGammaToMuHigh",   "fTwoGammaToMuHigh",   PtBinNumber, PtBins );
+  //
+  // Double_t BinCenter = 0;
+  // for ( Int_t ibin = 1; ibin < fCohJpsiToMuOrig->GetNbinsX(); ibin++ ) {
+  //   BinCenter = ((TAxis*)fCohJpsiToMuOrig->GetXaxis())->GetBinCenter(ibin);
+  //   if ( BinCenter > PtBins[PtBinNumber-1] ) continue;
+  //   cout << "BinCenter = " << BinCenter << endl;
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fCohJpsiToMu->Fill( fCohJpsiToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fCohJpsiToMu->SetBinContent(ibinVariable+1, fCohJpsiToMu->GetBinContent(ibinVariable+1) + (fCohJpsiToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fCohPsi2sToMu->Fill( fCohPsi2sToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fCohPsi2sToMu->SetBinContent(ibinVariable+1, fCohPsi2sToMu->GetBinContent(ibinVariable+1) + (fCohPsi2sToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fCohPsi2sToMuPi->Fill( fCohPsi2sToMuPiOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fCohPsi2sToMuPi->SetBinContent(ibinVariable+1, fCohPsi2sToMuPi->GetBinContent(ibinVariable+1) + (fCohPsi2sToMuPiOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fIncohJpsiToMu->Fill( fIncohJpsiToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fIncohJpsiToMu->SetBinContent(ibinVariable+1, fIncohJpsiToMu->GetBinContent(ibinVariable+1) + (fIncohJpsiToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fIncohPsi2sToMu->Fill( fIncohPsi2sToMuOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fIncohPsi2sToMu->SetBinContent(ibinVariable+1, fIncohPsi2sToMu->GetBinContent(ibinVariable+1) + (fIncohPsi2sToMuOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fIncohPsi2sToMuPi->Fill( fIncohPsi2sToMuPiOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fIncohPsi2sToMuPi->SetBinContent(ibinVariable+1, fIncohPsi2sToMuPi->GetBinContent(ibinVariable+1) + (fIncohPsi2sToMuPiOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fTwoGammaToMuMedium->Fill( fTwoGammaToMuMediumOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fTwoGammaToMuMedium->SetBinContent(ibinVariable+1, fTwoGammaToMuMedium->GetBinContent(ibinVariable+1) + (fTwoGammaToMuMediumOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  //   for( Int_t ibinVariable = 0; ibinVariable < PtBinNumber-1; ibinVariable++ ) {
+  //     if ( BinCenter < PtBins[ibinVariable+1] ){
+  //       // fTwoGammaToMuHigh->Fill( fTwoGammaToMuHighOrig->GetBinContent(ibin), 1./(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       fTwoGammaToMuHigh->SetBinContent(ibinVariable+1, fTwoGammaToMuHigh->GetBinContent(ibinVariable+1) + (fTwoGammaToMuHighOrig->GetBinContent(ibin))/(PtBins[ibinVariable+1]-PtBins[ibinVariable]) );
+  //       break;
+  //     }
+  //   }
+  // }
   // new TCanvas;
   // fCohJpsiToMu        -> Draw();
   // new TCanvas;
@@ -369,42 +379,43 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   fModelForHighPtTail->SetParameter(1, 1.6/*1.79*/);
   fModelForHighPtTail->SetParameter(2, 3.58);
   // fModelForHighPtTail->SetParameter(2, 2.);
-  fModelForHighPtTail->SetNpx( fCohJpsiToMu->GetNbinsX() );
-  // fHighPtTail = (TH1F*) fModelForHighPtTail->GetHistogram()->Clone("fHighPtTail");
-  // for (Int_t ibin=1; ibin<=fHighPtTail->GetNbinsX(); ibin++) {
-  //   fHighPtTail->SetBinError(ibin,0);
-  // }
-  // Double_t Integral_fHighPtTail = fHighPtTail->Integral();
-  // fHighPtTail->Scale( 1/Integral_fHighPtTail );
-  Float_t PtBins2[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
-                          0.200, 0.225, 0.250, 0.275, 0.350, 0.425, 0.500, 0.575,
-                          0.650, 0.725,
-                          0.800, 0.875, 0.950, 1.100, 1.250, 1.400, 1.600, 1.800,
-                          2.000, 2.500, 3.000, 3.500, 4.000, 5.000
-                        };
-  Int_t   PtBinNumber2 = sizeof(PtBins2)/sizeof(Float_t) - 1; // or just = 9
-  fHighPtTail = new TH1F( "fHighPtTail", "fHighPtTail", PtBinNumber2, PtBins2 );
+  // fModelForHighPtTail->SetNpx( fCohJpsiToMu->GetNbinsX() );
+  fModelForHighPtTail->SetNpx( 4.0/0.025 );
+  fHighPtTail = (TH1F*) fModelForHighPtTail->GetHistogram()->Clone("fHighPtTail");
   for (Int_t ibin=1; ibin<=fHighPtTail->GetNbinsX(); ibin++) {
     fHighPtTail->SetBinError(ibin,0);
-    fHighPtTail->SetBinContent(ibin,  fModelForHighPtTail->Integral(PtBins2[ibin-1], PtBins2[ibin])/(PtBins2[ibin]-PtBins2[ibin-1]));
   }
   Double_t Integral_fHighPtTail = fHighPtTail->Integral();
   fHighPtTail->Scale( 1/Integral_fHighPtTail );
+  // Float_t PtBins2[]    = { 0.000, 0.025, 0.050, 0.075, 0.100, 0.125, 0.150, 0.175,
+  //                         0.200, 0.225, 0.250, 0.275, 0.350, 0.425, 0.500, 0.575,
+  //                         0.650, 0.725,
+  //                         0.800, 0.875, 0.950, 1.100, 1.250, 1.400, 1.600, 1.800,
+  //                         2.000, 2.500, 3.000, 3.500, 4.000, 5.000
+  //                       };
+  // Int_t   PtBinNumber2 = sizeof(PtBins2)/sizeof(Float_t) - 1; // or just = 9
+  // fHighPtTail = new TH1F( "fHighPtTail", "fHighPtTail", PtBinNumber2, PtBins2 );
+  // for (Int_t ibin=1; ibin<=fHighPtTail->GetNbinsX(); ibin++) {
+  //   fHighPtTail->SetBinError(ibin,0);
+  //   fHighPtTail->SetBinContent(ibin,  fModelForHighPtTail->Integral(PtBins2[ibin-1], PtBins2[ibin])/(PtBins2[ibin]-PtBins2[ibin-1]));
+  // }
+  // Double_t Integral_fHighPtTail = fHighPtTail->Integral();
+  // fHighPtTail->Scale( 1/Integral_fHighPtTail );
 
 
 
   TH1F *fDimuonPtDistributionDataH = 0x0;
   if      ( selectionFlag == 0 ) {
-       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_0");
-       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_1");
-       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_2");
-       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_3");
-       else if ( selectionFlag2 == 4 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_4");
-       else if ( selectionFlag2 == 5 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_5");
-       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityHv3_0");
+       if      ( selectionFlag2 == 0 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_0");
+       else if ( selectionFlag2 == 1 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_1");
+       else if ( selectionFlag2 == 2 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_2");
+       else if ( selectionFlag2 == 3 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_3");
+       else if ( selectionFlag2 == 4 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_4");
+       else if ( selectionFlag2 == 5 ) fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_5");
+       else                            fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionRapidityH_0");
   }
   else                                 fDimuonPtDistributionDataH = (TH1F*)listings->FindObject("fDimuonPtDistributionH");
-  // fDimuonPtDistributionDataH->Rebin(5);
+  fDimuonPtDistributionDataH->Rebin(5);
   fDimuonPtDistributionDataH->Draw("PE");
 
 
@@ -451,11 +462,11 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
 
   Double_t kFeedDownCoherent = 0.05;     // neutral element
   Double_t kError            = 0.01;
-  if ( selectionFlag  == 1 ) {
-    FitPtDistr->FixParameter(4, kFeedDownCoherent * 2);
-  } else {
+  // if ( selectionFlag  == 1 ) {
+  //   FitPtDistr->FixParameter(4, kFeedDownCoherent * 2);
+  // } else {
     FitPtDistr->FixParameter(4, kFeedDownCoherent);
-  }
+  // }
   // FitPtDistr->SetParameter(4, kFeedDownCoherent);
   // FitPtDistr->SetParLimits(4, FitPtDistr->GetParameter(4)*(1-kError), FitPtDistr->GetParameter(4)*(1+kError));
 
@@ -504,7 +515,7 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
     else                            FitPtDistr->SetParameter(0,  592 );
   }
 
-  FitPtDistr->SetParLimits(0, FitPtDistr->GetParameter(0)*0.8, FitPtDistr->GetParameter(0)*1.2);
+  FitPtDistr->SetParLimits(0, FitPtDistr->GetParameter(0)*0.8, FitPtDistr->GetParameter(0)*1.4);
 
   if        ( selectionFlag  == 1 ) { // 0N0N
     if      ( selectionFlag2 == 0 ) FitPtDistr->SetParLimits(1, 110, 300);
@@ -600,12 +611,12 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
   if        ( selectionFlag == 0 ) {
     // FitPtDistr->SetParameter(2, 6531);  //2018
     // FitPtDistr->SetParameter(2, 9035);  //2018+2015 with SPD
-    // if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 7877 * 0.030);  //2018 no SPD, no AD
-    // else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 7877 * 0.132);  //2018 no SPD, no AD
-    // else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 7877 * 0.263);  //2018 no SPD, no AD
-    // else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 7877 * 0.308);  //2018 no SPD, no AD
-    // else if ( selectionFlag2 == 4 ) FitPtDistr->FixParameter(2, 7877 * 0.211);  //2018 no SPD, no AD
-    // else if ( selectionFlag2 == 5 ) FitPtDistr->FixParameter(2, 7877 * 0.059);  //2018 no SPD, no AD
+    // if      ( selectionFlag2 == 0 ) FitPtDistr->FixParameter(2, 7877 * 0.030);
+    // else if ( selectionFlag2 == 1 ) FitPtDistr->FixParameter(2, 7877 * 0.132);
+    // else if ( selectionFlag2 == 2 ) FitPtDistr->FixParameter(2, 7877 * 0.263);
+    // else if ( selectionFlag2 == 3 ) FitPtDistr->FixParameter(2, 7877 * 0.308);
+    // else if ( selectionFlag2 == 4 ) FitPtDistr->FixParameter(2, 7877 * 0.211);
+    // else if ( selectionFlag2 == 5 ) FitPtDistr->FixParameter(2, 7877 * 0.059);
     // else                            FitPtDistr->FixParameter(2, 7877);
     if      ( selectionFlag2 == 0 ) FitPtDistr->SetParameter(2, 7877 * 0.030);
     else if ( selectionFlag2 == 1 ) FitPtDistr->SetParameter(2, 7877 * 0.132);
@@ -847,36 +858,14 @@ void fitPtDistr(const char* AnalysisName, const int selectionFlag, const int sel
 
   // gPad->SaveAs("pngResults/fitPtDistr_v3.png", "RECREATE");
   if        ( selectionFlag == 0 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
-  } else if ( selectionFlag == 1 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_v3.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_0_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_1_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistr0N0N_2_v3.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistr0N0N_v3.png",   "RECREATE");
-  } else if ( selectionFlag == 2 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_v3.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_0_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_1_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistr0NXN_2_v3.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistr0NXN_v3.png",   "RECREATE");
-  } else if ( selectionFlag == 3 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_v3.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_0_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_1_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrXN0N_2_v3.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistrXN0N_v3.png",   "RECREATE");
-  } else if ( selectionFlag == 4 )  {
-       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_v3.png",   "RECREATE");
-       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_0_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_1_v3.png", "RECREATE");
-       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrXNXN_2_v3.png", "RECREATE");
-       else                            gPad->SaveAs("pngResults/fitPtDistrXN0N_v3.png",   "RECREATE");
-  } else                               gPad->SaveAs("pngResults/fitPtDistrALL_v3.png",    "RECREATE");
+       if      ( selectionFlag2 == 0 ) gPad->SaveAs("pngResults/fitPtDistrALL_0.png",    "RECREATE");
+       else if ( selectionFlag2 == 1 ) gPad->SaveAs("pngResults/fitPtDistrALL_1.png",    "RECREATE");
+       else if ( selectionFlag2 == 2 ) gPad->SaveAs("pngResults/fitPtDistrALL_2.png",    "RECREATE");
+       else if ( selectionFlag2 == 3 ) gPad->SaveAs("pngResults/fitPtDistrALL_3.png",    "RECREATE");
+       else if ( selectionFlag2 == 4 ) gPad->SaveAs("pngResults/fitPtDistrALL_4.png",    "RECREATE");
+       else if ( selectionFlag2 == 5 ) gPad->SaveAs("pngResults/fitPtDistrALL_5.png",    "RECREATE");
+       else                            gPad->SaveAs("pngResults/fitPtDistrALL.png",      "RECREATE");
+  } else                               gPad->SaveAs("pngResults/fitPtDistrALL.png",      "RECREATE");
 
 
 

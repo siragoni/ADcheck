@@ -24,17 +24,20 @@ using namespace std;
 void CrossSectionCoherentAnalysis(){
   TCanvas *c2 = new TCanvas("c2","c2",600,400);
   TGraphErrors *CoherentMine;
+  TGraphErrors *CoherentTomas;
   TGraphErrors *CoherentApril;
   TGraphErrors *CoherentMicha;
   TGraphErrors *CoherentLHCb;
   Double_t DSigmaDyCMUP6[6]   = { 0,0,0,0,0,0 };
+  Double_t DSigmaDyTomas[6]   = { 0,0,0,0,0,0 };
   Double_t DSigmaDyLHCb[5]    = { 1.10,1.73,2.28,2.60,3.0 };
   Double_t DSigmaDyCentralB[5]= { 3.5, 3.8, 3.75, 3.8, 3.5 };
   Double_t DSigmaDyCMUP11[6]  = { 1.615,1.938,2.377,2.831,3.018,3.531 };
-  // Double_t fICMUP6[6]         = { 0.154, 0.121, 0.094, 0.074, 0.073, 0.078 };
-  Double_t fICMUP6[6]         = { 0.064, 0.058, 0.060, 0.052, 0.049, 0.049 };
+  // Double_t fICMUP6[6]         = { 0.154, 0.121, 0.094, 0.074, 0.073, 0.078 }; // Different valeus for high pt model
+  Double_t fICMUP6[6]         = { 0.083, 0.070, 0.058, 0.065, 0.051, 0.044 }; // Different valeus for high pt model
+  // Double_t fICMUP6[6]         = { 0.064, 0.058, 0.060, 0.052, 0.049, 0.049 }; // from coherent paper
 
-  Double_t errfICMUP6[6]      = { 0.026,0.012,0.008,0.007,0.008,0.016 };
+  Double_t errfICMUP6[6]      = { 0.018,0.008,0.005,0.012,0.011,0.010 };
 
   Double_t fD                 = 0.055;
   Double_t eJPsiEvgeny[6]     = { 0.051, 0.140, 0.204, 0.191, 0.119, 0.029 };
@@ -43,10 +46,10 @@ void CrossSectionCoherentAnalysis(){
   Double_t eJPsiCMUP6[6]      = { 0.053, 0.145, 0.209, 0.193, 0.120, 0.029 };
   Double_t LUMI               = 532.926;
   Double_t BR                 = 0.05961;
-  Double_t NumOfJPsi[6]       = { 684, 2302, 4324, 4670, 3095, 817 };
+  Double_t NumOfJPsi[6]       = { 684.0, 2302.0, 4324.0, 4670.0, 3095.0, 817.0 };
 
   for( Int_t iLoop = 0; iLoop < 6; iLoop++ ){
-      DSigmaDyCMUP6[iLoop] = NumOfJPsi[iLoop]/( (1+fICMUP6[iLoop]+fD)*eJPsiCMUP6[iLoop]*BR*LUMI*0.275*0.95*1000 );
+      DSigmaDyCMUP6[iLoop] = NumOfJPsi[iLoop]/( (1+fICMUP6[iLoop]+fD)*eJPsiCMUP6[iLoop]*BR*LUMI*0.25*0.95*1000 );
   }
 
   Double_t x1[6]           = { -4.0+0*(4.0-2.5)/6.0+0.125, -4.0+1*(4.0-2.5)/6.0+0.125, -4.0+2*(4.0-2.5)/6.0+0.125, -4.0+3*(4.0-2.5)/6.0+0.125, -4.0+4*(4.0-2.5)/6.0+0.125,-4.0+5*(4.0-2.5)/6.0+0.125    };
@@ -110,31 +113,11 @@ void CrossSectionCoherentAnalysis(){
   // c2->Print("pngResults/MultiGraph2Dview.png");
   // return c2;
 
-  // cout << "0N0N : " << endl << DSigmaDy0N0N[0] << endl << DSigmaDy0N0N[1] << endl << DSigmaDy0N0N[2] << endl;
-  // cout << "0NXN : " << endl << DSigmaDy0NXN[0] << endl << DSigmaDy0NXN[1] << endl << DSigmaDy0NXN[2] << endl;
-  // cout << "XN0N : " << endl << DSigmaDyXN0N[0] << endl << DSigmaDyXN0N[1] << endl << DSigmaDyXN0N[2] << endl;
-  // cout << "XNXN : " << endl << DSigmaDyXNXN[0] << endl << DSigmaDyXNXN[1] << endl << DSigmaDyXNXN[2] << endl;
-  //
-  // cout << "0N0N E: " << endl << y1Error0N0N[0] << endl << y1Error0N0N[1] << endl << y1Error0N0N[2] << endl;
-  // cout << "0NXN E: " << endl << y1Error0NXN[0] << endl << y1Error0NXN[1] << endl << y1Error0NXN[2] << endl;
-  // cout << "XN0N E: " << endl << y1ErrorXN0N[0] << endl << y1ErrorXN0N[1] << endl << y1ErrorXN0N[2] << endl;
-  // cout << "XNXN E: " << endl << y1ErrorXNXN[0] << endl << y1ErrorXNXN[1] << endl << y1ErrorXNXN[2] << endl;
-
-
-
-  // new TCanvas;
-  // Double_t Ratio[3]  = { 0,0,0 };
-  // Double_t Error[3]  = { 0,0,0 };
-  // for (size_t i = 0; i < 3; i++) {
-  //   Ratio[i] = DSigmaDy0NXN[i] / DSigmaDyXN0N[i];
-  //   Error[i] = y1Error0NXN[i]  + y1ErrorXN0N[i];
-  // }
-  // TGraphErrors* RatioPlot = new TGraphErrors(3, x1, Ratio, x1Error, Error);
-  // RatioPlot->Draw("APL");
-  // RatioPlot->GetXaxis()->SetTitle("y");
-  // RatioPlot->GetYaxis()->SetTitle("Ratio [au]");
-  // // Change the axis limits
-  // gPad->BuildLegend();
-  // gPad->Modified();
+  cout << "CMUP6_0 = " << endl << DSigmaDyCMUP6[0] << " +/- " << y1ErrorCMUP6[0] << endl;
+  cout << "CMUP6_1 = " << endl << DSigmaDyCMUP6[1] << " +/- " << y1ErrorCMUP6[1] << endl;
+  cout << "CMUP6_2 = " << endl << DSigmaDyCMUP6[2] << " +/- " << y1ErrorCMUP6[2] << endl;
+  cout << "CMUP6_3 = " << endl << DSigmaDyCMUP6[3] << " +/- " << y1ErrorCMUP6[3] << endl;
+  cout << "CMUP6_4 = " << endl << DSigmaDyCMUP6[4] << " +/- " << y1ErrorCMUP6[4] << endl;
+  cout << "CMUP6_5 = " << endl << DSigmaDyCMUP6[5] << " +/- " << y1ErrorCMUP6[5] << endl;
 
 }
