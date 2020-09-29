@@ -1937,25 +1937,25 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
    * -
    */
   TString trigger = fAOD->GetFiredTriggerClasses();
-  if ( !( trigger.Contains("CMUP6-B-NOPF-MUFAST") )  )  {
-          PostData(1, fOutputList);
-          return;
-  }
+  // if ( !( trigger.Contains("CMUP6-B-NOPF-MUFAST") )  )  {
+  //         PostData(1, fOutputList);
+  //         return;
+  // }
 
 
   //_______________________________
   //
   // COHERENT check
   //
-  // if (    !(trigger.Contains("CMUP11-B-NOPF-MUFAST") ||
-  //         trigger.Contains("CMUP26-B-NOPF-MUFAST") ||
-  //         trigger.Contains("CMUP6-B-NOPF-MUFAST")  ||
-  //         trigger.Contains("CMUP10-B-NOPF-MUFAST") ||
-  //         trigger.Contains("CMUP13-B-NOPF-MUFAST")  )
-  //       )  {
-  //                 PostData(1, fOutputList);
-  //                 return;
-  // }
+  if (    !(trigger.Contains("CMUP11-B-NOPF-MUFAST") ||
+          trigger.Contains("CMUP26-B-NOPF-MUFAST") ||
+          trigger.Contains("CMUP6-B-NOPF-MUFAST")  ||
+          trigger.Contains("CMUP10-B-NOPF-MUFAST") ||
+          trigger.Contains("CMUP13-B-NOPF-MUFAST")  )
+        )  {
+                  PostData(1, fOutputList);
+                  return;
+  }
 
   //_______________________________
   /* -
@@ -1982,10 +1982,34 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
    */
   // Int_t  counterForTrigger = 0;
   // fRunNum    = fAOD->GetRunNumber();
+  if ( trigger.Contains("CMUP11-B-NOPF-MUFAST") )  {
+    fTriggersVsRunH->Fill( 0.5, fRunNum );
+    fRunNumberTriggerCMUP11ClassH        ->Fill(fRunNum);
+    fRunNumberTriggerCMUP11ClassProperlyH->Fill( Form("%d", fRunNum) , 1 );
+    // counterForTrigger++;
+  }
+  if ( trigger.Contains("CMUP26-B-NOPF-MUFAST") )  {
+    fTriggersVsRunH->Fill( 1.5, fRunNum );
+    fRunNumberTriggerCMUP26ClassH        ->Fill(fRunNum);
+    fRunNumberTriggerCMUP26ClassProperlyH->Fill( Form("%d", fRunNum) , 1 );
+    // counterForTrigger++;
+  }
   if ( trigger.Contains("CMUP6-B-NOPF-MUFAST") )  {
     fTriggersVsRunH->Fill( 2.5, fRunNum );
     fRunNumberTriggerCMUP6ClassH        ->Fill(fRunNum);
     fRunNumberTriggerCMUP6ClassProperlyH->Fill( Form("%d", fRunNum) , 1 );
+    // counterForTrigger++;
+  }
+  if ( trigger.Contains("CMUP10-B-NOPF-MUFAST") )  {
+    fTriggersVsRunH->Fill( 3.5, fRunNum );
+    fRunNumberTriggerCMUP10ClassH        ->Fill(fRunNum);
+    fRunNumberTriggerCMUP10ClassProperlyH->Fill( Form("%d", fRunNum) , 1 );
+    // counterForTrigger++;
+  }
+  if ( trigger.Contains("CMUP13-B-NOPF-MUFAST") )  {
+    fTriggersVsRunH->Fill( 4.5, fRunNum );
+    fRunNumberTriggerCMUP13ClassH        ->Fill(fRunNum);
+    fRunNumberTriggerCMUP13ClassProperlyH->Fill( Form("%d", fRunNum) , 1 );
     // counterForTrigger++;
   }
 
@@ -2752,8 +2776,8 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
       // fInvariantMassDistributionHV0Ccells->Fill(possibleJPsi.Mag());
   }
   if(   (fV0ADecision != 0)  ||
-        // (fADADecision != 0)  ||
-        // (fADCDecision != 0)  ||
+        (fADADecision != 0)  ||
+        (fADCDecision != 0)  ||
         (fV0TotalNCells > 2) ||
         !(fV0CDecision == 0  || fV0CDecision == 1)
       ) {
