@@ -24,9 +24,11 @@ using namespace std;
  */
 void fitEfficiencyMC(){
 
+  // TFile* fileList = new TFile("MCtrainResults/2019-09-17-All/kCohJpsiToMu/AnalysisResults.root");  // same settings as CheckAD
   // TFile* fileList = new TFile("MCtrainResults/2020-06-26/kCohJpsiToMu/AnalysisResults.root");  // same settings as CheckAD
   // TFile* fileList = new TFile("MCtrainResults/2020-06-26/kCohJpsiToMu/AnalysisResultsCoherentCMUP6.root");  // same settings as CheckAD
-  TFile* fileList = new TFile("AnalysisResultsCohLHC16b2.root");  // same settings as CheckAD
+  // TFile* fileList = new TFile("AnalysisResultsCohLHC16b2.root");  // same settings as CheckAD
+  TFile* fileList = new TFile("AnalysisResultsMC.root");  // same settings as CheckAD
   TDirectory* dir = fileList->GetDirectory("MyTask");
   TList* listings;
   dir->GetObject("MyOutputContainer", listings);
@@ -42,10 +44,12 @@ void fitEfficiencyMC(){
    */
   TH1F* fEfficiencyPerRunH[6]   = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
   TH1F* fMCEfficiencyPerRunH[6] = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
-  for (Int_t i = 0; i < 6; i++) {
+  for (Int_t i = 0; i < 3; i++) {
     // fEfficiencyPerRunH[i]   = (TH1F*)listings->FindObject( Form("fEfficiencyPerRunRapidityH_%d",   i) );
-    fEfficiencyPerRunH[i]   = (TH1F*)listings->FindObject( Form("fInvariantMassDistributionCoherentRapidityBinsH_%d",   i) );
-    fMCEfficiencyPerRunH[i] = (TH1F*)listings->FindObject( Form("fMCEfficiencyPerRunRapidityH_%d", i) );
+    fEfficiencyPerRunH[i]      = (TH1F*)listings->FindObject( Form("fInvariantMassDistributionCoherentRapidityBinsH_%d",   2*i) );
+    fEfficiencyPerRunH[i]  ->Add((TH1F*)listings->FindObject( Form("fInvariantMassDistributionCoherentRapidityBinsH_%d",   2*i+1) ));
+    fMCEfficiencyPerRunH[i]    = (TH1F*)listings->FindObject( Form("fMCEfficiencyPerRunRapidityH_%d", 2*i) );
+    fMCEfficiencyPerRunH[i]->Add((TH1F*)listings->FindObject( Form("fMCEfficiencyPerRunRapidityH_%d", 2*i+1) ));
     fEfficiencyPerRunH[i]   ->Sumw2();
     fMCEfficiencyPerRunH[i] ->Sumw2();
   }
@@ -56,7 +60,7 @@ void fitEfficiencyMC(){
   Double_t RECint = 0;
   Double_t GENint = 0;
   Double_t EFFint = 0;
-  for (Int_t i = 0; i < 6; i++) {
+  for (Int_t i = 0; i < 3; i++) {
     RECnumber[i]  = fEfficiencyPerRunH[i]  ->GetEntries();
     GENnumber[i]  = fMCEfficiencyPerRunH[i]->GetEntries();
     efficiency[i] = RECnumber[i] / GENnumber[i];
