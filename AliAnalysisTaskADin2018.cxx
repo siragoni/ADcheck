@@ -369,7 +369,12 @@ AliAnalysisTaskADin2018::AliAnalysisTaskADin2018()
                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-      fV0TotalNCells(0)
+      fV0TotalNCells(0),
+      fDimuonPtDistributionDissociativeH(0),
+      fDimuonPtDistributionDissociativeZNCzeroZNAzeroH(0),
+      fDimuonPtDistributionDissociativeZNCzeroZNAanyH(0),
+      fDimuonPtDistributionDissociativeZNCanyZNAzeroH(0),
+      fDimuonPtDistributionDissociativeZNCanyZNAanyH(0)
 {
     // default constructor, don't allocate memory here!
     // this is used by root for IO purposes, it needs to remain empty
@@ -666,7 +671,12 @@ AliAnalysisTaskADin2018::AliAnalysisTaskADin2018(const char* name)
                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-      fV0TotalNCells(0)
+      fV0TotalNCells(0),
+      fDimuonPtDistributionDissociativeH(0),
+      fDimuonPtDistributionDissociativeZNCzeroZNAzeroH(0),
+      fDimuonPtDistributionDissociativeZNCzeroZNAanyH(0),
+      fDimuonPtDistributionDissociativeZNCanyZNAzeroH(0),
+      fDimuonPtDistributionDissociativeZNCanyZNAanyH(0)
 {
 
     // constructor
@@ -1789,6 +1799,26 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
   // END SIDEBANDS
   //_______________________________
 
+
+
+
+
+  fDimuonPtDistributionDissociativeH = new TH1F("fDimuonPtDistributionDissociativeH", "fDimuonPtDistributionDissociativeH", 4000, 0, 20);
+  fOutputList->Add(fDimuonPtDistributionDissociativeH);
+
+  fDimuonPtDistributionDissociativeZNCzeroZNAzeroH = new TH1F("fDimuonPtDistributionDissociativeZNCzeroZNAzeroH", "fDimuonPtDistributionDissociativeZNCzeroZNAzeroH", 4000, 0, 20);
+  fOutputList->Add(fDimuonPtDistributionDissociativeZNCzeroZNAzeroH);
+
+  fDimuonPtDistributionDissociativeZNCzeroZNAanyH = new TH1F("fDimuonPtDistributionDissociativeZNCzeroZNAanyH", "fDimuonPtDistributionDissociativeZNCzeroZNAanyH", 4000, 0, 20);
+  fOutputList->Add(fDimuonPtDistributionDissociativeZNCzeroZNAanyH);
+
+  fDimuonPtDistributionDissociativeZNCanyZNAzeroH = new TH1F("fDimuonPtDistributionDissociativeZNCanyZNAzeroH", "fDimuonPtDistributionDissociativeZNCanyZNAzeroH", 4000, 0, 20);
+  fOutputList->Add(fDimuonPtDistributionDissociativeZNCanyZNAzeroH);
+
+  fDimuonPtDistributionDissociativeZNCanyZNAanyH = new TH1F("fDimuonPtDistributionDissociativeZNCanyZNAanyH", "fDimuonPtDistributionDissociativeZNCanyZNAanyH", 4000, 0, 20);
+  fOutputList->Add(fDimuonPtDistributionDissociativeZNCanyZNAanyH);
+
+
   //_______________________________
   // - End of the function
   PostData(1, fOutputList);           // postdata will notify the analysis manager of changes / updates to the
@@ -2776,8 +2806,8 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
       // fInvariantMassDistributionHV0Ccells->Fill(possibleJPsi.Mag());
   }
   if(   (fV0ADecision != 0)  ||
-        (fADADecision != 0)  ||
-        (fADCDecision != 0)  ||
+        // (fADADecision != 0)  ||
+        // (fADCDecision != 0)  ||
         (fV0TotalNCells > 2) ||
         !(fV0CDecision == 0  || fV0CDecision == 1)
       ) {
@@ -2933,6 +2963,11 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
   if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) ) {
     fDimuonPtDistributionH            ->Fill(ptOfTheDimuonPair);
     fDimuonPtDistributionShiftPlusOneH->Fill(ptOfTheDimuonPair);
+    if (        possibleJPsi.Rapidity() > -4.0  && possibleJPsi.Rapidity() <= -2.5 ) {
+      if ( (fADADecision != 0)  || (fADCDecision != 0) ) {
+        fDimuonPtDistributionDissociativeH->Fill(ptOfTheDimuonPair);
+      }
+    }
     if (        possibleJPsi.Rapidity() > -4.0  && possibleJPsi.Rapidity() <= -3.75 ) {
       fDimuonPtDistributionRapidityH[0]->Fill(ptOfTheDimuonPair);
       if (        ptOfTheDimuonPair < 0.275 ) {
@@ -3456,6 +3491,11 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
                */
               if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) ) {
                   fDimuonPtDistributionZNCzeroZNAzeroHv2             ->Fill(ptOfTheDimuonPair);
+                  if (        possibleJPsi.Rapidity() > -4.0  && possibleJPsi.Rapidity() <= -2.5 ) {
+                    if ( (fADADecision != 0)  || (fADCDecision != 0) ) {
+                      fDimuonPtDistributionDissociativeZNCzeroZNAzeroH->Fill(ptOfTheDimuonPair);
+                    }
+                  }
                   /* -
                    * - Variable pt-binning.
                    * -
@@ -3795,6 +3835,11 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
                */
               if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) ) {
                   fDimuonPtDistributionZNCzeroZNAanyHv2            ->Fill(ptOfTheDimuonPair);
+                  if (        possibleJPsi.Rapidity() > -4.0  && possibleJPsi.Rapidity() <= -2.5 ) {
+                    if ( (fADADecision != 0)  || (fADCDecision != 0) ) {
+                      fDimuonPtDistributionDissociativeZNCzeroZNAanyH->Fill(ptOfTheDimuonPair);
+                    }
+                  }
                   /* -
                    * - Variable pt-binning.
                    * -
@@ -4138,6 +4183,11 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
                */
               if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) ) {
                   fDimuonPtDistributionZNCanyZNAzeroHv2            ->Fill(ptOfTheDimuonPair);
+                  if (        possibleJPsi.Rapidity() > -4.0  && possibleJPsi.Rapidity() <= -2.5 ) {
+                    if ( (fADADecision != 0)  || (fADCDecision != 0) ) {
+                      fDimuonPtDistributionDissociativeZNCanyZNAzeroH->Fill(ptOfTheDimuonPair);
+                    }
+                  }
                   /* -
                    * - Variable pt-binning.
                    * -
@@ -4478,6 +4528,11 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
                */
               if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) ) {
                   fDimuonPtDistributionZNCanyZNAanyHv2            ->Fill(ptOfTheDimuonPair);
+                  if (        possibleJPsi.Rapidity() > -4.0  && possibleJPsi.Rapidity() <= -2.5 ) {
+                    if ( (fADADecision != 0)  || (fADCDecision != 0) ) {
+                      fDimuonPtDistributionDissociativeZNCanyZNAanyH->Fill(ptOfTheDimuonPair);
+                    }
+                  }
                   /* -
                    * - Variable pt-binning.
                    * -

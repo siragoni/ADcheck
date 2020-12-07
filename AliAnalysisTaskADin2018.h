@@ -562,6 +562,18 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fCounterZNCH;         //!
 
 
+                                /**
+                                 * Reversing the exclusivity conditions.
+                                 * GOAL: to fix b and n for the tail of
+                                 * the pT distributions in case we decide
+                                 * not to use the AD decisions.
+                                 */
+        TH1F*                   fDimuonPtDistributionDissociativeH;                     //!
+        TH1F*                   fDimuonPtDistributionDissociativeZNCzeroZNAzeroH;       //!
+        TH1F*                   fDimuonPtDistributionDissociativeZNCzeroZNAanyH;        //!
+        TH1F*                   fDimuonPtDistributionDissociativeZNCanyZNAzeroH;        //!
+        TH1F*                   fDimuonPtDistributionDissociativeZNCanyZNAanyH;         //!
+
 
         //_______________________________
         // DIFFERENTIAL NEUTRON EMISSION PLOTS
