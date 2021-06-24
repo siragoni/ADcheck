@@ -138,7 +138,34 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  * 0-th cut, and lowest, even possibly null, at
                                  * the last possible cut.
                                  */
-        TH1F*                   fCounterH;          //!
+        TH1F*                   fCounterH;            //!
+        TH1F*                   fTrackletsH;          //!
+        TH1F*                   fVZEROCcellsH;        //!
+        TH2F*                   fADAvsADCdecH;        //!
+        TH1F*                   fTracklets_onon_H;          //!
+        TH1F*                   fVZEROCcells_onon_H;        //!
+        TH2F*                   fADAvsADCdec_onon_H;        //!
+        TH1F*                   fTracklets_onxn_H;          //!
+        TH1F*                   fVZEROCcells_onxn_H;        //!
+        TH2F*                   fADAvsADCdec_onxn_H;        //!
+        TH1F*                   fTracklets_xnon_H;          //!
+        TH1F*                   fVZEROCcells_xnon_H;        //!
+        TH2F*                   fADAvsADCdec_xnon_H;        //!
+        TH1F*                   fTracklets_xnxn_H;          //!
+        TH1F*                   fVZEROCcells_xnxn_H;        //!
+        TH2F*                   fADAvsADCdec_xnxn_H;        //!
+        TH1F*                   fDimuonPt_onon_noADA_H;     //!
+        TH1F*                   fDimuonPt_onon_noADC_H;     //!
+        TH1F*                   fDimuonPt_onon_noADA_noADC_H;     //!
+        TH1F*                   fDimuonPt_onxn_noADA_H;     //!
+        TH1F*                   fDimuonPt_onxn_noADC_H;     //!
+        TH1F*                   fDimuonPt_onxn_noADA_noADC_H;     //!
+        TH1F*                   fDimuonPt_xnon_noADA_H;     //!
+        TH1F*                   fDimuonPt_xnon_noADC_H;     //!
+        TH1F*                   fDimuonPt_xnon_noADA_noADC_H;     //!
+        TH1F*                   fDimuonPt_xnxn_noADA_H;     //!
+        TH1F*                   fDimuonPt_xnxn_noADC_H;     //!
+        TH1F*                   fDimuonPt_xnxn_noADA_noADC_H;     //!
 
                                 /**
                                  * As far as I understand, it should be the
@@ -1115,7 +1142,7 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
          * If I happen to encounter it again in the future, I will make sure to
          * record it!
          */
-        ClassDef(AliAnalysisTaskADin2018, 12);
+        ClassDef(AliAnalysisTaskADin2018, 13);
 };
 
 #endif

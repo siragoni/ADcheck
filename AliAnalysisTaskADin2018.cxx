@@ -85,6 +85,35 @@ AliAnalysisTaskADin2018::AliAnalysisTaskADin2018()
       fADcheck(0),
       fNumberMuonsH(0),
       fCounterH(0),
+
+      fTrackletsH(0),
+      fVZEROCcellsH(0),
+      fADAvsADCdecH(0),
+      fTracklets_onon_H(0),
+      fVZEROCcells_onon_H(0),
+      fADAvsADCdec_onon_H(0),
+      fTracklets_onxn_H(0),
+      fVZEROCcells_onxn_H(0),
+      fADAvsADCdec_onxn_H(0),
+      fTracklets_xnon_H(0),
+      fVZEROCcells_xnon_H(0),
+      fADAvsADCdec_xnon_H(0),
+      fTracklets_xnxn_H(0),
+      fVZEROCcells_xnxn_H(0),
+      fADAvsADCdec_xnxn_H(0),
+      fDimuonPt_onon_noADA_H(0),
+      fDimuonPt_onon_noADC_H(0),
+      fDimuonPt_onon_noADA_noADC_H(0),
+      fDimuonPt_onxn_noADA_H(0),
+      fDimuonPt_onxn_noADC_H(0),
+      fDimuonPt_onxn_noADA_noADC_H(0),
+      fDimuonPt_xnon_noADA_H(0),
+      fDimuonPt_xnon_noADC_H(0),
+      fDimuonPt_xnon_noADA_noADC_H(0),
+      fDimuonPt_xnxn_noADA_H(0),
+      fDimuonPt_xnxn_noADC_H(0),
+      fDimuonPt_xnxn_noADA_noADC_H(0),
+
       fEtaMuonH(0),
       fRAbsMuonH(0),
       fInvariantMassDistributionH(0),
@@ -388,6 +417,35 @@ AliAnalysisTaskADin2018::AliAnalysisTaskADin2018(const char* name)
       fADcheck(0),
       fNumberMuonsH(0),
       fCounterH(0),
+
+      fTrackletsH(0),
+      fVZEROCcellsH(0),
+      fADAvsADCdecH(0),
+      fTracklets_onon_H(0),
+      fVZEROCcells_onon_H(0),
+      fADAvsADCdec_onon_H(0),
+      fTracklets_onxn_H(0),
+      fVZEROCcells_onxn_H(0),
+      fADAvsADCdec_onxn_H(0),
+      fTracklets_xnon_H(0),
+      fVZEROCcells_xnon_H(0),
+      fADAvsADCdec_xnon_H(0),
+      fTracklets_xnxn_H(0),
+      fVZEROCcells_xnxn_H(0),
+      fADAvsADCdec_xnxn_H(0),
+      fDimuonPt_onon_noADA_H(0),
+      fDimuonPt_onon_noADC_H(0),
+      fDimuonPt_onon_noADA_noADC_H(0),
+      fDimuonPt_onxn_noADA_H(0),
+      fDimuonPt_onxn_noADC_H(0),
+      fDimuonPt_onxn_noADA_noADC_H(0),
+      fDimuonPt_xnon_noADA_H(0),
+      fDimuonPt_xnon_noADC_H(0),
+      fDimuonPt_xnon_noADA_noADC_H(0),
+      fDimuonPt_xnxn_noADA_H(0),
+      fDimuonPt_xnxn_noADC_H(0),
+      fDimuonPt_xnxn_noADA_noADC_H(0),
+
       fEtaMuonH(0),
       fRAbsMuonH(0),
       fInvariantMassDistributionH(0),
@@ -1819,6 +1877,100 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
   fOutputList->Add(fDimuonPtDistributionDissociativeZNCanyZNAanyH);
 
 
+
+
+
+
+
+
+
+
+
+
+
+  fTrackletsH = new TH1F("fTrackletsH", "fTrackletsH", 100, -0.5, 99.5);
+  fOutputList->Add(fTrackletsH);
+
+  fVZEROCcellsH = new TH1F("fVZEROCcellsH", "fVZEROCcellsH", 100, -0.5, 99.5);
+  fOutputList->Add(fVZEROCcellsH);
+
+  fADAvsADCdecH = new TH2F("fADAvsADCdecH","fADAvsADCdecH", 10, -0.5, 9.5, 10, -0.5, 9.5);
+  fOutputList->Add(fADAvsADCdecH);
+
+  fTracklets_onon_H = new TH1F("fTracklets_onon_H", "fTracklets_onon_H", 100, -0.5, 99.5);
+  fOutputList->Add(fTracklets_onon_H);
+
+  fVZEROCcells_onon_H = new TH1F("fVZEROCcells_onon_H", "fVZEROCcells_onon_H", 100, -0.5, 99.5);
+  fOutputList->Add(fVZEROCcells_onon_H);
+
+  fADAvsADCdec_onon_H = new TH2F("fADAvsADCdec_onon_H","fADAvsADCdec_onon_H", 10, -0.5, 9.5, 10, -0.5, 9.5);
+  fOutputList->Add(fADAvsADCdec_onon_H);
+
+  fTracklets_onxn_H = new TH1F("fTracklets_onxn_H", "fTracklets_onxn_H", 100, -0.5, 99.5);
+  fOutputList->Add(fTracklets_onon_H);
+
+  fVZEROCcells_onxn_H = new TH1F("fVZEROCcells_onxn_H", "fVZEROCcells_onxn_H", 100, -0.5, 99.5);
+  fOutputList->Add(fVZEROCcells_onon_H);
+
+  fADAvsADCdec_onxn_H = new TH2F("fADAvsADCdec_onxn_H","fADAvsADCdec_onxn_H", 10, -0.5, 9.5, 10, -0.5, 9.5);
+  fOutputList->Add(fADAvsADCdec_onon_H);
+
+  fTracklets_xnon_H = new TH1F("fTracklets_xnon_H", "fTracklets_xnon_H", 100, -0.5, 99.5);
+  fOutputList->Add(fTracklets_xnon_H);
+
+  fVZEROCcells_xnon_H = new TH1F("fVZEROCcells_xnon_H", "fVZEROCcells_xnon_H", 100, -0.5, 99.5);
+  fOutputList->Add(fVZEROCcells_xnon_H);
+
+  fADAvsADCdec_xnon_H = new TH2F("fADAvsADCdec_xnon_H","fADAvsADCdec_xnon_H", 10, -0.5, 9.5, 10, -0.5, 9.5);
+  fOutputList->Add(fADAvsADCdec_xnon_H);
+
+  fTracklets_xnxn_H = new TH1F("fTracklets_xnxn_H", "fTracklets_xnxn_H", 100, -0.5, 99.5);
+  fOutputList->Add(fTracklets_xnxn_H);
+
+  fVZEROCcells_xnxn_H = new TH1F("fVZEROCcells_xnxn_H", "fVZEROCcells_xnxn_H", 100, -0.5, 99.5);
+  fOutputList->Add(fVZEROCcells_xnxn_H);
+
+  fADAvsADCdec_xnxn_H = new TH2F("fADAvsADCdec_xnxn_H","fADAvsADCdec_xnxn_H", 10, -0.5, 9.5, 10, -0.5, 9.5);
+  fOutputList->Add(fADAvsADCdec_xnxn_H);
+  //
+  fDimuonPt_onon_noADA_H = new TH1F("fDimuonPt_onon_noADA_H", "fDimuonPt_onon_noADA_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_onon_noADA_H);
+
+  fDimuonPt_onon_noADC_H = new TH1F("fDimuonPt_onon_noADC_H", "fDimuonPt_onon_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_onon_noADC_H);
+
+  fDimuonPt_onon_noADA_noADC_H = new TH1F("fDimuonPt_onon_noADA_noADC_H", "fDimuonPt_onon_noADA_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_onon_noADA_noADC_H);
+  //
+  fDimuonPt_onxn_noADA_H = new TH1F("fDimuonPt_onxn_noADA_H", "fDimuonPt_onxn_noADA_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_onxn_noADA_H);
+
+  fDimuonPt_onxn_noADC_H = new TH1F("fDimuonPt_onxn_noADC_H", "fDimuonPt_onxn_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_onxn_noADC_H);
+
+  fDimuonPt_onxn_noADA_noADC_H = new TH1F("fDimuonPt_onxn_noADA_noADC_H", "fDimuonPt_onxn_noADA_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_onxn_noADA_noADC_H);
+  //
+  fDimuonPt_xnon_noADA_H = new TH1F("fDimuonPt_xnon_noADA_H", "fDimuonPt_xnon_noADA_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_xnon_noADA_H);
+
+  fDimuonPt_xnon_noADC_H = new TH1F("fDimuonPt_xnon_noADC_H", "fDimuonPt_xnon_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_xnon_noADC_H);
+
+  fDimuonPt_xnon_noADA_noADC_H = new TH1F("fDimuonPt_xnon_noADA_noADC_H", "fDimuonPt_xnon_noADA_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_xnon_noADA_noADC_H);
+  //
+  fDimuonPt_xnxn_noADA_H = new TH1F("fDimuonPt_xnxn_noADA_H", "fDimuonPt_xnxn_noADA_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_xnxn_noADA_H);
+
+  fDimuonPt_xnxn_noADC_H = new TH1F("fDimuonPt_xnxn_noADC_H", "fDimuonPt_xnxn_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_xnxn_noADC_H);
+
+  fDimuonPt_xnxn_noADA_noADC_H = new TH1F("fDimuonPt_xnxn_noADA_noADC_H", "fDimuonPt_xnxn_noADA_noADC_H", 4000, 0, 20);
+  fOutputList->Add(fDimuonPt_xnxn_noADA_noADC_H);
+
+
+
   //_______________________________
   // - End of the function
   PostData(1, fOutputList);           // postdata will notify the analysis manager of changes / updates to the
@@ -2776,8 +2928,33 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
 
 
 
+  //_______________________________
+  Bool_t isZNAfired_3 = kFALSE;
+  Bool_t isZNCfired_3 = kFALSE;
+  for(Int_t iZDC = 0; iZDC < 4 ; iZDC++) {
+    if ( (isZNAfired_3 == 0) && (fZNATDC[iZDC] > -2.) && (fZNATDC[iZDC] < 2.) ) {
+      isZNAfired_3 = kTRUE;
+    }
+    if ( (isZNCfired_3 == 0) && (fZNCTDC[iZDC] > -2.) && (fZNCTDC[iZDC] < 2.) ) {
+      isZNCfired_3 = kTRUE;
+    }
+  }
+  if(fV0ADecision != 0)  {
+    fVZEROCcellsH->Fill(fV0TotalNCells);
+    if(isZNAfired_3 == 0 && isZNCfired_3 == 0){
+      fVZEROCcells_onon_H->Fill(fV0TotalNCells);
+    }
+    if(isZNAfired_3 == 0 && isZNCfired_3 != 0){
+      fVZEROCcells_onxn_H->Fill(fV0TotalNCells);
+    }
+    if(isZNAfired_3 != 0 && isZNCfired_3 == 0){
+      fVZEROCcells_xnon_H->Fill(fV0TotalNCells);
+    }
+    if(isZNAfired_3 != 0 && isZNCfired_3 != 0){
+      fVZEROCcells_xnxn_H->Fill(fV0TotalNCells);
+    }
 
-
+  }
 
 
 
@@ -2910,6 +3087,11 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
 
 
 
+
+
+
+
+
   /* - Finally the core!!!
    * - What will be happening is that we will instantiate TLorentzVectors to
    * - obtain the invariant mass of the dimuon system. If everything goes fine
@@ -2930,6 +3112,64 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
   }
   fInvariantMassDistributionH->Fill(possibleJPsi.Mag());
   fInvariantMassDistributionExtendedH->Fill(possibleJPsi.Mag());
+
+
+
+
+
+
+
+
+
+
+
+  fTrackletsH->Fill(fTracklets);
+  fADAvsADCdecH->Fill(fADADecision,fADCDecision);
+  if(isZNAfired_2 == 0 && isZNCfired_2 == 0){
+    fTracklets_onon_H  ->Fill(fTracklets);
+    fADAvsADCdec_onon_H->Fill(fADADecision,fADCDecision);
+    if (fADADecision != 0)                      fDimuonPt_onon_noADA_H      ->Fill(possibleJPsi.Pt());
+    if (fADCDecision != 0)                      fDimuonPt_onon_noADC_H      ->Fill(possibleJPsi.Pt());
+    if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onon_noADA_noADC_H->Fill(possibleJPsi.Pt());
+  }
+  if(isZNAfired_2 == 0 && isZNCfired_2 != 0){
+    fTracklets_onxn_H  ->Fill(fTracklets);
+    fADAvsADCdec_onxn_H->Fill(fADADecision,fADCDecision);
+    if (fADADecision != 0)                      fDimuonPt_onxn_noADA_H      ->Fill(possibleJPsi.Pt());
+    if (fADCDecision != 0)                      fDimuonPt_onxn_noADC_H      ->Fill(possibleJPsi.Pt());
+    if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onxn_noADA_noADC_H->Fill(possibleJPsi.Pt());
+  }
+  if(isZNAfired_2 != 0 && isZNCfired_2 == 0){
+    fTracklets_xnon_H  ->Fill(fTracklets);
+    fADAvsADCdec_xnon_H->Fill(fADADecision,fADCDecision);
+    if (fADADecision != 0)                      fDimuonPt_xnon_noADA_H      ->Fill(possibleJPsi.Pt());
+    if (fADCDecision != 0)                      fDimuonPt_xnon_noADC_H      ->Fill(possibleJPsi.Pt());
+    if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnon_noADA_noADC_H->Fill(possibleJPsi.Pt());
+  }
+  if(isZNAfired_2 != 0 && isZNCfired_2 != 0){
+    fTracklets_xnxn_H  ->Fill(fTracklets);
+    fADAvsADCdec_xnxn_H->Fill(fADADecision,fADCDecision);
+    if (fADADecision != 0)                      fDimuonPt_xnxn_noADA_H      ->Fill(possibleJPsi.Pt());
+    if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_H      ->Fill(possibleJPsi.Pt());
+    if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_H->Fill(possibleJPsi.Pt());
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /* - Now we are evaluating the pt of the dimuon pair. Generally speaking,
