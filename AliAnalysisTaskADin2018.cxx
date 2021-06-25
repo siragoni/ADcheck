@@ -1907,13 +1907,13 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
   fOutputList->Add(fADAvsADCdec_onon_H);
 
   fTracklets_onxn_H = new TH1F("fTracklets_onxn_H", "fTracklets_onxn_H", 100, -0.5, 99.5);
-  fOutputList->Add(fTracklets_onon_H);
+  fOutputList->Add(fTracklets_onxn_H);
 
   fVZEROCcells_onxn_H = new TH1F("fVZEROCcells_onxn_H", "fVZEROCcells_onxn_H", 100, -0.5, 99.5);
-  fOutputList->Add(fVZEROCcells_onon_H);
+  fOutputList->Add(fVZEROCcells_onxn_H);
 
   fADAvsADCdec_onxn_H = new TH2F("fADAvsADCdec_onxn_H","fADAvsADCdec_onxn_H", 10, -0.5, 9.5, 10, -0.5, 9.5);
-  fOutputList->Add(fADAvsADCdec_onon_H);
+  fOutputList->Add(fADAvsADCdec_onxn_H);
 
   fTracklets_xnon_H = new TH1F("fTracklets_xnon_H", "fTracklets_xnon_H", 100, -0.5, 99.5);
   fOutputList->Add(fTracklets_xnon_H);
