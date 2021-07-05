@@ -2939,6 +2939,19 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
       isZNCfired_3 = kTRUE;
     }
   }
+  TLorentzVector muonsSecond[2];
+  TLorentzVector possibleJPsiSecond;
+  Double_t       chargeOfMuonsSecond[2];
+  for(int indexMuon = 0; indexMuon < 2; indexMuon++) {
+        muonsSecond[indexMuon].SetPtEtaPhiM(   track[indexMuon]->Pt(),
+                                         track[indexMuon]->Eta(),
+                                         track[indexMuon]->Phi(),
+                                         TDatabasePDG::Instance()->GetParticle(13)->Mass()
+                                       );
+        possibleJPsiSecond += muonsSecond[indexMuon];
+        chargeOfMuonsSecond[indexMuon] = track[indexMuon]->Charge();
+  }
+  if(possibleJPsiSecond.Mag() > 2.9 && possibleJPsiSecond.Mag() < 3.3){
   if(fV0ADecision != 0)  {
     fVZEROCcellsH->Fill(fV0TotalNCells);
     if(isZNAfired_3 == 0 && isZNCfired_3 == 0){
@@ -2955,7 +2968,7 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     }
 
   }
-
+  }
 
 
 
@@ -3122,7 +3135,7 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
 
 
 
-
+  if(possibleJPsiSecond.Mag() > 2.9 && possibleJPsiSecond.Mag() < 3.3){
   fTrackletsH->Fill(fTracklets);
   fADAvsADCdecH->Fill(fADADecision,fADCDecision);
   if(isZNAfired_2 == 0 && isZNCfired_2 == 0){
@@ -3153,7 +3166,7 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_H      ->Fill(possibleJPsi.Pt());
     if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_H->Fill(possibleJPsi.Pt());
   }
-
+  }
 
 
 
