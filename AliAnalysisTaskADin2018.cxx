@@ -113,6 +113,27 @@ AliAnalysisTaskADin2018::AliAnalysisTaskADin2018()
       fDimuonPt_xnxn_noADA_H(0),
       fDimuonPt_xnxn_noADC_H(0),
       fDimuonPt_xnxn_noADA_noADC_H(0),
+      fVZEROCcells_onon_match_H{0,0,0,0},
+      fVZEROCcells_onxn_match_H{0,0,0,0},
+      fVZEROCcells_xnon_match_H{0,0,0,0},
+      fVZEROCcells_xnxn_match_H{0,0,0,0},
+      fDimuonPt_onon_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_onon_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_onon_noADA_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_onxn_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_onxn_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_onxn_noADA_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnon_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnon_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnon_noADA_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnxn_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnxn_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnxn_noADA_noADC_VZEROC_H{0,0,0,0},
+      fZNAEnergyAgainstEntries_VZEROC_H{0,0,0,0},
+      fZNCEnergyAgainstEntries_VZEROC_H{0,0,0,0},
+      fZNAEnergyBeforeTimingSelection_VZEROC_H{0,0,0,0},
+      fZNCEnergyBeforeTimingSelection_VZEROC_H{0,0,0,0},
+      fZNAvsZNCH(0),
 
       fEtaMuonH(0),
       fRAbsMuonH(0),
@@ -433,6 +454,27 @@ AliAnalysisTaskADin2018::AliAnalysisTaskADin2018(const char* name)
       fTracklets_xnxn_H(0),
       fVZEROCcells_xnxn_H(0),
       fADAvsADCdec_xnxn_H(0),
+      fVZEROCcells_onon_match_H{0,0,0,0},
+      fVZEROCcells_onxn_match_H{0,0,0,0},
+      fVZEROCcells_xnon_match_H{0,0,0,0},
+      fVZEROCcells_xnxn_match_H{0,0,0,0},
+      fDimuonPt_onon_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_onon_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_onon_noADA_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_onxn_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_onxn_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_onxn_noADA_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnon_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnon_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnon_noADA_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnxn_noADA_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnxn_noADC_VZEROC_H{0,0,0,0},
+      fDimuonPt_xnxn_noADA_noADC_VZEROC_H{0,0,0,0},
+      fZNAEnergyAgainstEntries_VZEROC_H{0,0,0,0},
+      fZNCEnergyAgainstEntries_VZEROC_H{0,0,0,0},
+      fZNAEnergyBeforeTimingSelection_VZEROC_H{0,0,0,0},
+      fZNCEnergyBeforeTimingSelection_VZEROC_H{0,0,0,0},
+      fZNAvsZNCH(0),
       fDimuonPt_onon_noADA_H(0),
       fDimuonPt_onon_noADC_H(0),
       fDimuonPt_onon_noADA_noADC_H(0),
@@ -1969,6 +2011,165 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
   fDimuonPt_xnxn_noADA_noADC_H = new TH1F("fDimuonPt_xnxn_noADA_noADC_H", "fDimuonPt_xnxn_noADA_noADC_H", 4000, 0, 20);
   fOutputList->Add(fDimuonPt_xnxn_noADA_noADC_H);
 
+  for( Int_t iRapidity = 0; iRapidity < 4; iRapidity++ ){
+    // onon
+    fDimuonPt_onon_noADA_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_onon_noADA_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onon_noADA_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_onon_noADA_VZEROC_H[iRapidity]);
+
+    fDimuonPt_onon_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_onon_noADC_VZEROC_H[iRapidity]);
+
+    fDimuonPt_onon_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_onon_noADC_VZEROC_H[iRapidity]);
+
+
+    // onxn
+    fDimuonPt_onxn_noADA_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_onxn_noADA_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onxn_noADA_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_onxn_noADA_VZEROC_H[iRapidity]);
+
+    fDimuonPt_onxn_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_onxn_noADC_VZEROC_H[iRapidity]);
+
+    fDimuonPt_onxn_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_onxn_noADC_VZEROC_H[iRapidity]);
+
+
+
+    // xnon
+    fDimuonPt_xnon_noADA_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_xnon_noADA_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnon_noADA_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_xnon_noADA_VZEROC_H[iRapidity]);
+
+    fDimuonPt_xnon_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_xnon_noADC_VZEROC_H[iRapidity]);
+
+    fDimuonPt_xnon_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_xnon_noADC_VZEROC_H[iRapidity]);
+
+
+    //xnxn
+    fDimuonPt_xnxn_noADA_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_xnxn_noADA_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnxn_noADA_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_xnxn_noADA_VZEROC_H[iRapidity]);
+
+    fDimuonPt_xnxn_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_xnxn_noADC_VZEROC_H[iRapidity]);
+
+    fDimuonPt_xnxn_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
+              Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
+              4000, 0, 20
+              );
+    fOutputList->Add(fDimuonPt_xnxn_noADC_VZEROC_H[iRapidity]);
+
+
+    // vzero-c
+    fVZEROCcells_onon_match_H[iRapidity] = new TH1F(
+              Form("fVZEROCcells_onon_match_H_%d", iRapidity),
+              Form("fVZEROCcells_onon_match_H_%d", iRapidity),
+              100, -0.5, 99.5
+              );
+    fOutputList->Add(fVZEROCcells_onon_match_H[iRapidity]);
+
+    fVZEROCcells_onxn_match_H[iRapidity] = new TH1F(
+              Form("fVZEROCcells_onxn_match_H_%d", iRapidity),
+              Form("fVZEROCcells_onxn_match_H_%d", iRapidity),
+              100, -0.5, 99.5
+              );
+    fOutputList->Add(fVZEROCcells_onxn_match_H[iRapidity]);
+
+    fVZEROCcells_xnon_match_H[iRapidity] = new TH1F(
+              Form("fVZEROCcells_xnon_match_H_%d", iRapidity),
+              Form("fVZEROCcells_xnon_match_H_%d", iRapidity),
+              100, -0.5, 99.5
+              );
+    fOutputList->Add(fVZEROCcells_xnon_match_H[iRapidity]);
+
+    fVZEROCcells_xnxn_match_H[iRapidity] = new TH1F(
+              Form("fVZEROCcells_xnxn_match_H_%d", iRapidity),
+              Form("fVZEROCcells_xnxn_match_H_%d", iRapidity),
+              100, -0.5, 99.5
+              );
+    fOutputList->Add(fVZEROCcells_xnxn_match_H[iRapidity]);
+
+
+    // zdc
+    fZNAEnergyAgainstEntries_VZEROC_H[iRapidity] = new TH1F(
+              Form("fZNAEnergyAgainstEntries_VZEROC_H_%d", iRapidity),
+              Form("fZNAEnergyAgainstEntries_VZEROC_H_%d", iRapidity),
+              20000, -10000, 40000
+              );
+    fOutputList->Add(fZNAEnergyAgainstEntries_VZEROC_H[iRapidity]);
+
+    fZNCEnergyAgainstEntries_VZEROC_H[iRapidity] = new TH1F(
+              Form("fZNCEnergyAgainstEntries_VZEROC_H_%d", iRapidity),
+              Form("fZNCEnergyAgainstEntries_VZEROC_H_%d", iRapidity),
+              20000, -10000, 40000
+              );
+    fOutputList->Add(fZNCEnergyAgainstEntries_VZEROC_H[iRapidity]);
+
+    fZNAEnergyBeforeTimingSelection_VZEROC_H[iRapidity] = new TH1F(
+              Form("fZNAEnergyBeforeTimingSelection_VZEROC_H_%d", iRapidity),
+              Form("fZNAEnergyBeforeTimingSelection_VZEROC_H_%d", iRapidity),
+              20000, -10000, 40000
+              );
+    fOutputList->Add(fZNAEnergyBeforeTimingSelection_VZEROC_H[iRapidity]);
+
+    fZNCEnergyBeforeTimingSelection_VZEROC_H[iRapidity] = new TH1F(
+              Form("fZNCEnergyBeforeTimingSelection_VZEROC_H_%d", iRapidity),
+              Form("fZNCEnergyBeforeTimingSelection_VZEROC_H_%d", iRapidity),
+              20000, -10000, 40000
+              );
+    fOutputList->Add(fZNCEnergyBeforeTimingSelection_VZEROC_H[iRapidity]);
+
+
+  }
+
+  fZNAvsZNCH = new TH2F("fZNAvsZNCH","fZNAvsZNCH", 200, -10000, 90000, 200, -10000, 90000);
+  fOutputList->Add(fZNAvsZNCH);
+
 
 
   //_______________________________
@@ -2500,18 +2701,15 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
      - whether the number of fired V0C cells is above 2 is just to add up the
      - boolean numbers for 0<i<32. Let's see.
      -
-     - Weird fact: this doesn't seem to work... I have changed it so that if
-     - the single cell has recorded a signal (kTRUE) then it adds up to the
-     - total number of cells. Hope for the best.
-     -
-     - I am an idiot!!!!!! I have to reset the variable everytime!!!!
    */
   fV0TotalNCells = 0;
+  Int_t fV0TotalNCellsAndMatching = 0;
   for(Int_t iV0Hits = 0; iV0Hits < 64; iV0Hits++) {
         fV0Hits[iV0Hits] = dataVZERO->GetBBFlag(iV0Hits);
         if(fV0Hits[iV0Hits] == kTRUE) {
               // if(iV0Hits < 32) fV0TotalNCells += fV0Hits[iV0Hits];
-              if(iV0Hits < 32) fV0TotalNCells += 1;
+              if(iV0Hits < 32) fV0TotalNCells            += 1;
+              if(iV0Hits < 32) fV0TotalNCellsAndMatching += 1;
         }
         // std::cout << "fV0Hits[iV0Hits = " << iV0Hits << ", fRunNum=" << fRunNum << "] = " << fV0Hits[iV0Hits] << endl;
         // std::cout << "fV0TotalNCells (fRunNum = " << fRunNum << ") = " << fV0TotalNCells << endl;
@@ -2929,6 +3127,13 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
 
 
   //_______________________________
+  Int_t FirstMuonVZEROC  = MuonTagCellVZEROC( track[0]->Eta(), track[0]->Phi() );
+  Int_t SecondMuonVZEROC = MuonTagCellVZEROC( track[1]->Eta(), track[1]->Phi() );
+  if( fV0TotalNCells > 0 ){
+    if ( (Double_t) fV0Hits[FirstMuonVZEROC]  > 0.5 ) fV0TotalNCellsAndMatching -= 1;
+    if ( (Double_t) fV0Hits[SecondMuonVZEROC] > 0.5 ) fV0TotalNCellsAndMatching -= 1;
+  }
+
   Bool_t isZNAfired_3 = kFALSE;
   Bool_t isZNCfired_3 = kFALSE;
   for(Int_t iZDC = 0; iZDC < 4 ; iZDC++) {
@@ -2952,19 +3157,75 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
         chargeOfMuonsSecond[indexMuon] = track[indexMuon]->Charge();
   }
   if(possibleJPsiSecond.Mag() > 2.9 && possibleJPsiSecond.Mag() < 3.3){
-  if(fV0ADecision != 0)  {
+  // if(fV0ADecision != 0)  { -- what was used before!
+  if(fV0ADecision == 0)  {
     fVZEROCcellsH->Fill(fV0TotalNCells);
     if(isZNAfired_3 == 0 && isZNCfired_3 == 0){
       fVZEROCcells_onon_H->Fill(fV0TotalNCells);
+      if ( fV0TotalNCellsAndMatching < 3 ) {
+        fVZEROCcells_onon_match_H[0]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+        fVZEROCcells_onon_match_H[1]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+        fVZEROCcells_onon_match_H[2]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+        fVZEROCcells_onon_match_H[3]->Fill(fV0TotalNCells);
+      }
+
     }
     if(isZNAfired_3 == 0 && isZNCfired_3 != 0){
       fVZEROCcells_onxn_H->Fill(fV0TotalNCells);
+      if ( fV0TotalNCellsAndMatching < 3 ) {
+        fVZEROCcells_onxn_match_H[0]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+        fVZEROCcells_onxn_match_H[1]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+        fVZEROCcells_onxn_match_H[2]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+        fVZEROCcells_onxn_match_H[3]->Fill(fV0TotalNCells);
+      }
+
+
     }
     if(isZNAfired_3 != 0 && isZNCfired_3 == 0){
       fVZEROCcells_xnon_H->Fill(fV0TotalNCells);
+      if ( fV0TotalNCellsAndMatching < 3 ) {
+        fVZEROCcells_xnon_match_H[0]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+        fVZEROCcells_xnon_match_H[1]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+        fVZEROCcells_xnon_match_H[2]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+        fVZEROCcells_xnon_match_H[3]->Fill(fV0TotalNCells);
+      }
+
+
     }
     if(isZNAfired_3 != 0 && isZNCfired_3 != 0){
       fVZEROCcells_xnxn_H->Fill(fV0TotalNCells);
+      if ( fV0TotalNCellsAndMatching < 3 ) {
+        fVZEROCcells_xnxn_match_H[0]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+        fVZEROCcells_xnxn_match_H[1]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+        fVZEROCcells_xnxn_match_H[2]->Fill(fV0TotalNCells);
+      }
+      if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+        fVZEROCcells_xnxn_match_H[3]->Fill(fV0TotalNCells);
+      }
+
+
     }
 
   }
@@ -3132,10 +3393,16 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
 
 
 
+  // Int_t FirstMuonVZEROC  = MuonTagCellVZEROC( track[0]->Eta(), track[0]->Phi() );
+  // Int_t SecondMuonVZEROC = MuonTagCellVZEROC( track[1]->Eta(), track[1]->Phi() );
+  // if( fV0TotalNCells > 0 ){
+  //   if ( (Double_t) fV0Hits[FirstMuonVZEROC]  > 0.5 ) fV0TotalNCellsAndMatching -= 1;
+  //   if ( (Double_t) fV0Hits[SecondMuonVZEROC] > 0.5 ) fV0TotalNCellsAndMatching -= 1;
+  // }
 
 
 
-  if(possibleJPsiSecond.Mag() > 2.9 && possibleJPsiSecond.Mag() < 3.3){
+  // if(possibleJPsiSecond.Mag() > 2.9 && possibleJPsiSecond.Mag() < 3.3){
   fTrackletsH->Fill(fTracklets);
   fADAvsADCdecH->Fill(fADADecision,fADCDecision);
   if(isZNAfired_2 == 0 && isZNCfired_2 == 0){
@@ -3144,6 +3411,31 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if (fADADecision != 0)                      fDimuonPt_onon_noADA_H      ->Fill(possibleJPsi.Pt());
     if (fADCDecision != 0)                      fDimuonPt_onon_noADC_H      ->Fill(possibleJPsi.Pt());
     if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onon_noADA_noADC_H->Fill(possibleJPsi.Pt());
+
+    if ( fV0TotalNCellsAndMatching < 3 ) {
+      if (fADADecision != 0)                      fDimuonPt_onon_noADA_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onon_noADC_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onon_noADA_noADC_VZEROC_H[0]->Fill(possibleJPsi.Pt());
+      // if(possibleJPsiSecond.Mag() > 2.9 && possibleJPsiSecond.Mag() < 3.3){
+      //
+      // }
+    }
+    if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+      if (fADADecision != 0)                      fDimuonPt_onon_noADA_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onon_noADC_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onon_noADA_noADC_VZEROC_H[1]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+      if (fADADecision != 0)                      fDimuonPt_onon_noADA_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onon_noADC_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onon_noADA_noADC_VZEROC_H[2]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+      if (fADADecision != 0)                      fDimuonPt_onon_noADA_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onon_noADC_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onon_noADA_noADC_VZEROC_H[3]->Fill(possibleJPsi.Pt());
+    }
+
   }
   if(isZNAfired_2 == 0 && isZNCfired_2 != 0){
     fTracklets_onxn_H  ->Fill(fTracklets);
@@ -3151,6 +3443,29 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if (fADADecision != 0)                      fDimuonPt_onxn_noADA_H      ->Fill(possibleJPsi.Pt());
     if (fADCDecision != 0)                      fDimuonPt_onxn_noADC_H      ->Fill(possibleJPsi.Pt());
     if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onxn_noADA_noADC_H->Fill(possibleJPsi.Pt());
+
+
+    if ( fV0TotalNCellsAndMatching < 3 ) {
+      if (fADADecision != 0)                      fDimuonPt_onxn_noADA_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onxn_noADC_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onxn_noADA_noADC_VZEROC_H[0]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+      if (fADADecision != 0)                      fDimuonPt_onxn_noADA_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onxn_noADC_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onxn_noADA_noADC_VZEROC_H[1]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+      if (fADADecision != 0)                      fDimuonPt_onxn_noADA_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onxn_noADC_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onxn_noADA_noADC_VZEROC_H[2]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+      if (fADADecision != 0)                      fDimuonPt_onxn_noADA_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_onxn_noADC_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_onxn_noADA_noADC_VZEROC_H[3]->Fill(possibleJPsi.Pt());
+    }
+
   }
   if(isZNAfired_2 != 0 && isZNCfired_2 == 0){
     fTracklets_xnon_H  ->Fill(fTracklets);
@@ -3158,6 +3473,31 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if (fADADecision != 0)                      fDimuonPt_xnon_noADA_H      ->Fill(possibleJPsi.Pt());
     if (fADCDecision != 0)                      fDimuonPt_xnon_noADC_H      ->Fill(possibleJPsi.Pt());
     if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnon_noADA_noADC_H->Fill(possibleJPsi.Pt());
+
+
+
+
+    if ( fV0TotalNCellsAndMatching < 3 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnon_noADA_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnon_noADC_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnon_noADA_noADC_VZEROC_H[0]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnon_noADA_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnon_noADC_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnon_noADA_noADC_VZEROC_H[1]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnon_noADA_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnon_noADC_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnon_noADA_noADC_VZEROC_H[2]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnon_noADA_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnon_noADC_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnon_noADA_noADC_VZEROC_H[3]->Fill(possibleJPsi.Pt());
+    }
+
   }
   if(isZNAfired_2 != 0 && isZNCfired_2 != 0){
     fTracklets_xnxn_H  ->Fill(fTracklets);
@@ -3165,8 +3505,30 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if (fADADecision != 0)                      fDimuonPt_xnxn_noADA_H      ->Fill(possibleJPsi.Pt());
     if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_H      ->Fill(possibleJPsi.Pt());
     if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_H->Fill(possibleJPsi.Pt());
+
+    if ( fV0TotalNCellsAndMatching < 3 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnxn_noADA_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_VZEROC_H[0]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_VZEROC_H[0]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnxn_noADA_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_VZEROC_H[1]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_VZEROC_H[1]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnxn_noADA_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_VZEROC_H[2]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_VZEROC_H[2]->Fill(possibleJPsi.Pt());
+    }
+    if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+      if (fADADecision != 0)                      fDimuonPt_xnxn_noADA_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADCDecision != 0)                      fDimuonPt_xnxn_noADC_VZEROC_H[3]      ->Fill(possibleJPsi.Pt());
+      if (fADADecision != 0 && fADCDecision != 0) fDimuonPt_xnxn_noADA_noADC_VZEROC_H[3]->Fill(possibleJPsi.Pt());
+    }
+
   }
-  }
+  // }
 
 
 
@@ -3446,6 +3808,19 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
   if ( isZNCfired != 0 ) {
     if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) && (possibleJPsi.Pt() < 0.25)){
       fZNCEnergyAgainstEntriesH        ->Fill(fZNCEnergy);
+      if ( fV0TotalNCellsAndMatching < 3 ) {
+        fZNCEnergyAgainstEntries_VZEROC_H[0]->Fill(fZNCEnergy);
+      }
+      if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+        fZNCEnergyAgainstEntries_VZEROC_H[1]->Fill(fZNCEnergy);
+      }
+      if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+        fZNCEnergyAgainstEntries_VZEROC_H[2]->Fill(fZNCEnergy);
+      }
+      if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+        fZNCEnergyAgainstEntries_VZEROC_H[3]->Fill(fZNCEnergy);
+      }
+
     }
     fZNCEnergyAgainstEntriesExtendedH->Fill(fZNCEnergy);
     if ( calibrated == 0 ) fZNCEnergyUncalibratedH->Fill(fZNCEnergy);
@@ -3456,6 +3831,19 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
   }
   if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) && (possibleJPsi.Pt() < 0.25)){
     fZNCEnergyBeforeTimingSelectionH               ->Fill(fZNCEnergy);
+    if ( fV0TotalNCellsAndMatching < 3 ) {
+      fZNCEnergyBeforeTimingSelection_VZEROC_H[0]->Fill(fZNCEnergy);
+    }
+    if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+      fZNCEnergyBeforeTimingSelection_VZEROC_H[1]->Fill(fZNCEnergy);
+    }
+    if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+      fZNCEnergyBeforeTimingSelection_VZEROC_H[2]->Fill(fZNCEnergy);
+    }
+    if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+      fZNCEnergyBeforeTimingSelection_VZEROC_H[3]->Fill(fZNCEnergy);
+    }
+
     if ( ADCPastFutureBoolean    == 0 ) fADCmultiplicityTotalVsZNCenergyH   ->Fill(ADCmultiplicitiesTotal,    fZNCEnergy);
     if ( VZEROCPastFutureBoolean == 0 ) fVZEROCmultiplicityTotalVsZNCenergyH->Fill(VZEROCmultiplicitiesTotal, fZNCEnergy);
     if ( is_ADC_set == 0 )    {
@@ -3476,6 +3864,19 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
   if ( isZNAfired != 0 ) {
     if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) && (possibleJPsi.Pt() < 0.25)){
       fZNAEnergyAgainstEntriesH        ->Fill(fZNAEnergy);
+      if ( fV0TotalNCellsAndMatching < 3 ) {
+        fZNAEnergyAgainstEntries_VZEROC_H[0]->Fill(fZNCEnergy);
+      }
+      if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+        fZNAEnergyAgainstEntries_VZEROC_H[1]->Fill(fZNCEnergy);
+      }
+      if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+        fZNAEnergyAgainstEntries_VZEROC_H[2]->Fill(fZNCEnergy);
+      }
+      if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+        fZNAEnergyAgainstEntries_VZEROC_H[3]->Fill(fZNCEnergy);
+      }
+
     }
     fZNAEnergyAgainstEntriesExtendedH->Fill(fZNAEnergy);
     if ( calibrated == 0 ) fZNAEnergyUncalibratedH->Fill(fZNAEnergy);
@@ -3486,6 +3887,19 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
   }
   if ( (possibleJPsi.Mag() > 2.85) && (possibleJPsi.Mag() < 3.35) && (possibleJPsi.Pt() < 0.25)){
     fZNAEnergyBeforeTimingSelectionH               ->Fill(fZNAEnergy);
+    if ( fV0TotalNCellsAndMatching < 3 ) {
+      fZNAEnergyBeforeTimingSelection_VZEROC_H[0]->Fill(fZNCEnergy);
+    }
+    if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
+      fZNAEnergyBeforeTimingSelection_VZEROC_H[1]->Fill(fZNCEnergy);
+    }
+    if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
+      fZNAEnergyBeforeTimingSelection_VZEROC_H[2]->Fill(fZNCEnergy);
+    }
+    if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
+      fZNAEnergyBeforeTimingSelection_VZEROC_H[3]->Fill(fZNCEnergy);
+    }
+
     if ( ADAPastFutureBoolean    == 0 ) fADAmultiplicityTotalVsZNAenergyH   ->Fill(ADAmultiplicitiesTotal,    fZNAEnergy);
     if ( VZEROAPastFutureBoolean == 0 ) fVZEROAmultiplicityTotalVsZNAenergyH->Fill(VZEROAmultiplicitiesTotal, fZNAEnergy);
     if ( is_ADA_set == 0 )    {
@@ -3496,6 +3910,9 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     }
   }
   fZNAEnergyBeforeTimingSelectionExtendedH->Fill(fZNAEnergy);
+
+
+  fZNAvsZNCH->Fill(fZNAEnergy,fZNCEnergy);
 
   /* - CHECKS for the timing:
      - Stricter timing window AND without timing window at all!
@@ -5189,6 +5606,26 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
 
   // post the data
   PostData(1, fOutputList);
+}
+//_____________________________________________________________________________
+Int_t AliAnalysisTaskADin2018::MuonTagCellVZEROC(Double_t ItsEta, Double_t ItsPhi)
+{
+  // coverage in eta of v0c
+  // -3.7,-3.2,-2.7,-2.2,-1.7 for ring 0, 1, 2, 3 and 4, respectively
+
+  Int_t i_eta = -1;
+  Int_t idx   = -1;
+  if      ( ItsEta>-3.7 && ItsEta<-3.2) i_eta = 0;
+  else if ( ItsEta>-3.2 && ItsEta<-2.7) i_eta = 1;
+  else if ( ItsEta>-2.7 && ItsEta<-2.2) i_eta = 2;
+  else if ( ItsEta>-2.2 && ItsEta<-1.7) i_eta = 3;
+
+  if (i_eta> -1) {
+    Int_t i_phi = (Int_t) ((4.0*ItsPhi/TMath::Pi()));
+    idx = i_eta*8+i_phi;
+  }
+
+  return idx;
 }
 //_____________________________________________________________________________
 void AliAnalysisTaskADin2018::Terminate(Option_t *)

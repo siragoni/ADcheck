@@ -98,6 +98,12 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         virtual void            SetCheckAD( Int_t fFlagValue ){ fADcheck = fFlagValue; }
 
                                 /**
+                                 * Tags which VZERO-C cell should the muon
+                                 * have activated.
+                                 */
+        virtual Int_t           MuonTagCellVZEROC(Double_t ItsEta, Double_t ItsPhi);
+
+                                /**
                                  * Use the class as a data member. It contains
                                  * the cuts for the muon track.
                                  */
@@ -144,15 +150,19 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH2F*                   fADAvsADCdecH;        //!
         TH1F*                   fTracklets_onon_H;          //!
         TH1F*                   fVZEROCcells_onon_H;        //!
+        TH1F*                   fVZEROCcells_onon_match_H[4];        //!
         TH2F*                   fADAvsADCdec_onon_H;        //!
         TH1F*                   fTracklets_onxn_H;          //!
         TH1F*                   fVZEROCcells_onxn_H;        //!
+        TH1F*                   fVZEROCcells_onxn_match_H[4];        //!
         TH2F*                   fADAvsADCdec_onxn_H;        //!
         TH1F*                   fTracklets_xnon_H;          //!
         TH1F*                   fVZEROCcells_xnon_H;        //!
+        TH1F*                   fVZEROCcells_xnon_match_H[4];        //!
         TH2F*                   fADAvsADCdec_xnon_H;        //!
         TH1F*                   fTracklets_xnxn_H;          //!
         TH1F*                   fVZEROCcells_xnxn_H;        //!
+        TH1F*                   fVZEROCcells_xnxn_match_H[4];        //!
         TH2F*                   fADAvsADCdec_xnxn_H;        //!
         TH1F*                   fDimuonPt_onon_noADA_H;     //!
         TH1F*                   fDimuonPt_onon_noADC_H;     //!
@@ -166,6 +176,19 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fDimuonPt_xnxn_noADA_H;     //!
         TH1F*                   fDimuonPt_xnxn_noADC_H;     //!
         TH1F*                   fDimuonPt_xnxn_noADA_noADC_H;     //!
+
+        TH1F*                   fDimuonPt_onon_noADA_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_onon_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_onon_noADA_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_onxn_noADA_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_onxn_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_onxn_noADA_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_xnon_noADA_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_xnon_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_xnon_noADA_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_xnxn_noADA_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_xnxn_noADC_VZEROC_H[4];     //!
+        TH1F*                   fDimuonPt_xnxn_noADA_noADC_VZEROC_H[4];     //!
 
                                 /**
                                  * As far as I understand, it should be the
@@ -400,6 +423,11 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fZNCEnergyAgainstEntriesH;                 //!
         TH1F*                   fZNCEnergyAgainstEntriesExtendedH;         //!
         TH1F*                   fZNCEnergyAgainstEntriesExtendedHv2;       //!
+        TH1F*                   fZNCEnergyAgainstEntries_VZEROC_H[4];                 //!
+        // TH1F*                   fZNCEnergyAgainstEntriesExtended_VZEROC_H[4];         //!
+
+
+        TH2F*                   fZNAvsZNCH;
 
                                 /**
                                  * This histogram records the energy distri-
@@ -413,6 +441,8 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fZNAEnergyAgainstEntriesH;                 //!
         TH1F*                   fZNAEnergyAgainstEntriesExtendedH;         //!
         TH1F*                   fZNAEnergyAgainstEntriesExtendedHv2;       //!
+        TH1F*                   fZNAEnergyAgainstEntries_VZEROC_H[4];                 //!
+        // TH1F*                   fZNAEnergyAgainstEntriesExtended_VZEROC_H[4];         //!
 
                                 /**
                                  * This histogram records the energy distri-
@@ -421,6 +451,8 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  */
         TH1F*                   fZNCEnergyBeforeTimingSelectionH;                 //!
         TH1F*                   fZNCEnergyBeforeTimingSelectionExtendedH;         //!
+        TH1F*                   fZNCEnergyBeforeTimingSelection_VZEROC_H[4];                 //!
+        // TH1F*                   fZNCEnergyBeforeTimingSelectionExtended_VZEROC_H[4];         //!
 
                                 /**
                                  * This histogram records the energy distri-
@@ -429,6 +461,8 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
                                  */
         TH1F*                   fZNAEnergyBeforeTimingSelectionH;                 //!
         TH1F*                   fZNAEnergyBeforeTimingSelectionExtendedH;         //!
+        TH1F*                   fZNAEnergyBeforeTimingSelection_VZEROC_H[4];                 //!
+        // TH1F*                   fZNAEnergyBeforeTimingSelectionExtended_VZEROC_H[4];         //!
 
                                 /**
                                  * This histogram records the energy distri-
