@@ -2032,7 +2032,7 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
               Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
-    fOutputList->Add(fDimuonPt_onon_noADC_VZEROC_H[iRapidity]);
+    fOutputList->Add(fDimuonPt_onon_noADA_noADC_VZEROC_H_[iRapidity]);
 
 
     // onxn
@@ -2055,7 +2055,7 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
               Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
-    fOutputList->Add(fDimuonPt_onxn_noADC_VZEROC_H[iRapidity]);
+    fOutputList->Add(fDimuonPt_onxn_noADA_noADC_VZEROC_H[iRapidity]);
 
 
 
@@ -2079,7 +2079,7 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
               Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
-    fOutputList->Add(fDimuonPt_xnon_noADC_VZEROC_H[iRapidity]);
+    fOutputList->Add(fDimuonPt_xnon_noADA_noADC_VZEROC_H[iRapidity]);
 
 
     //xnxn
@@ -2102,7 +2102,7 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
               Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
-    fOutputList->Add(fDimuonPt_xnxn_noADC_VZEROC_H[iRapidity]);
+    fOutputList->Add(fDimuonPt_xnxn_noADA_noADC_VZEROC_H[iRapidity]);
 
 
     // vzero-c
@@ -3163,32 +3163,65 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if(isZNAfired_3 == 0 && isZNCfired_3 == 0){
       fVZEROCcells_onon_H->Fill(fV0TotalNCells);
       if ( fV0TotalNCellsAndMatching < 3 ) {
-        fVZEROCcells_onon_match_H[0]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onon_match_H[0]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
-        fVZEROCcells_onon_match_H[1]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onon_match_H[1]->Fill(iV0Hits);
+              }
+        }
+
       }
       if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
-        fVZEROCcells_onon_match_H[2]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onon_match_H[2]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
-        fVZEROCcells_onon_match_H[3]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onon_match_H[3]->Fill(iV0Hits);
+              }
+        }
       }
 
     }
     if(isZNAfired_3 == 0 && isZNCfired_3 != 0){
       fVZEROCcells_onxn_H->Fill(fV0TotalNCells);
       if ( fV0TotalNCellsAndMatching < 3 ) {
-        fVZEROCcells_onxn_match_H[0]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onxn_match_H[0]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
-        fVZEROCcells_onxn_match_H[1]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onxn_match_H[1]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
-        fVZEROCcells_onxn_match_H[2]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onxn_match_H[2]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
-        fVZEROCcells_onxn_match_H[3]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_onxn_match_H[3]->Fill(iV0Hits);
+              }
+        }
       }
 
 
@@ -3196,16 +3229,32 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if(isZNAfired_3 != 0 && isZNCfired_3 == 0){
       fVZEROCcells_xnon_H->Fill(fV0TotalNCells);
       if ( fV0TotalNCellsAndMatching < 3 ) {
-        fVZEROCcells_xnon_match_H[0]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnon_match_H[0]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
-        fVZEROCcells_xnon_match_H[1]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnon_match_H[1]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
-        fVZEROCcells_xnon_match_H[2]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnon_match_H[2]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
-        fVZEROCcells_xnon_match_H[3]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnon_match_H[3]->Fill(iV0Hits);
+              }
+        }
       }
 
 
@@ -3213,16 +3262,32 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
     if(isZNAfired_3 != 0 && isZNCfired_3 != 0){
       fVZEROCcells_xnxn_H->Fill(fV0TotalNCells);
       if ( fV0TotalNCellsAndMatching < 3 ) {
-        fVZEROCcells_xnxn_match_H[0]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnxn_match_H[0]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 2 && fV0TotalNCellsAndMatching < 10 ) {
-        fVZEROCcells_xnxn_match_H[1]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnxn_match_H[1]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 9 && fV0TotalNCellsAndMatching < 20 ) {
-        fVZEROCcells_xnxn_match_H[2]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnxn_match_H[2]->Fill(iV0Hits);
+              }
+        }
       }
       if ( fV0TotalNCellsAndMatching > 20 && fV0TotalNCellsAndMatching < 32 ) {
-        fVZEROCcells_xnxn_match_H[3]->Fill(fV0TotalNCells);
+        for(Int_t iV0Hits = 0; iV0Hits < 32; iV0Hits++) {
+              if(fV0Hits[iV0Hits] > 0.5) {
+                fVZEROCcells_xnxn_match_H[3]->Fill(iV0Hits);
+              }
+        }
       }
 
 
