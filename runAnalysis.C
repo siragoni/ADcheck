@@ -211,9 +211,9 @@ void runAnalysis(Int_t opt)
         TString LHC15o("LHC15o");
         // define the output folders
         // alienHandler->SetGridWorkingDir("PbPb18r_check2");
-        if (opt == 0) alienHandler->SetGridWorkingDir("PbPb18q_XNXN_noAD9");
-        if (opt == 1) alienHandler->SetGridWorkingDir("PbPb18r_XNXN_noAD9");
-        if (opt == 2) alienHandler->SetGridWorkingDir("PbPb15o_XNXN_noAD9");
+        if (opt == 0) alienHandler->SetGridWorkingDir("PbPb18q_XNXN_noAD1");
+        if (opt == 1) alienHandler->SetGridWorkingDir("PbPb18r_XNXN_noAD1");
+        if (opt == 2) alienHandler->SetGridWorkingDir("PbPb15o_XNXN_noAD1");
         if (opt == 0) alienHandler->SetGridOutputDir(LHC18q.Data());
         if (opt == 1) alienHandler->SetGridOutputDir(LHC18r.Data());
         if (opt == 2) alienHandler->SetGridOutputDir(LHC15o.Data());
