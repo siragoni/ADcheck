@@ -2032,7 +2032,7 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
               Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
-    fOutputList->Add(fDimuonPt_onon_noADA_noADC_VZEROC_H_[iRapidity]);
+    fOutputList->Add(fDimuonPt_onon_noADA_noADC_VZEROC_H[iRapidity]);
 
 
     // onxn
