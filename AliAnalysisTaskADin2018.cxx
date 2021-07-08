@@ -2028,8 +2028,8 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
     fOutputList->Add(fDimuonPt_onon_noADC_VZEROC_H[iRapidity]);
 
     fDimuonPt_onon_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
-              Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
-              Form("fDimuonPt_onon_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onon_noADA_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onon_noADA_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
     fOutputList->Add(fDimuonPt_onon_noADA_noADC_VZEROC_H[iRapidity]);
@@ -2051,8 +2051,8 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
     fOutputList->Add(fDimuonPt_onxn_noADC_VZEROC_H[iRapidity]);
 
     fDimuonPt_onxn_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
-              Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
-              Form("fDimuonPt_onxn_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onxn_noADA_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_onxn_noADA_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
     fOutputList->Add(fDimuonPt_onxn_noADA_noADC_VZEROC_H[iRapidity]);
@@ -2075,8 +2075,8 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
     fOutputList->Add(fDimuonPt_xnon_noADC_VZEROC_H[iRapidity]);
 
     fDimuonPt_xnon_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
-              Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
-              Form("fDimuonPt_xnon_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnon_noADA_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnon_noADA_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
     fOutputList->Add(fDimuonPt_xnon_noADA_noADC_VZEROC_H[iRapidity]);
@@ -2098,8 +2098,8 @@ void AliAnalysisTaskADin2018::UserCreateOutputObjects()
     fOutputList->Add(fDimuonPt_xnxn_noADC_VZEROC_H[iRapidity]);
 
     fDimuonPt_xnxn_noADA_noADC_VZEROC_H[iRapidity] = new TH1F(
-              Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
-              Form("fDimuonPt_xnxn_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnxn_noADA_noADC_VZEROC_H_%d", iRapidity),
+              Form("fDimuonPt_xnxn_noADA_noADC_VZEROC_H_%d", iRapidity),
               4000, 0, 20
               );
     fOutputList->Add(fDimuonPt_xnxn_noADA_noADC_VZEROC_H[iRapidity]);
