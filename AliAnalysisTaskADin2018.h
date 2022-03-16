@@ -769,6 +769,7 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAzeroShiftPlusTwoH;       //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAzeroHv2;                 //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAzeroRapidityHv2[3];      //!
+        TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAzeroHv5;                 //!
 
                                 /**
                                  * This histogram records the invariant mass
@@ -795,6 +796,7 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAanyShiftPlusTwoH;       //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAanyHv2;                 //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAanyRapidityHv2[3];      //!
+        TH1F*                   fInvariantMassDistributionIncoherentZNCzeroZNAanyHv5;                 //!
 
                                 /**
                                  * This histogram records the invariant mass
@@ -821,6 +823,8 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAzeroShiftPlusTwoH;       //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAzeroHv2;                 //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAzeroRapidityHv2[3];      //!
+        TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAzeroHv5;                 //!
+
 
                                 /**
                                  * This histogram records the invariant mass
@@ -847,6 +851,7 @@ class AliAnalysisTaskADin2018 : public AliAnalysisTaskSE
         TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAanyShiftPlusTwoH;       //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAanyHv2;                 //!
         TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAanyRapidityHv2[3];      //!
+        TH1F*                   fInvariantMassDistributionIncoherentZNCanyZNAanyHv5;                 //!
 
                                 /**
                                  * This histogram records the pt-ditribution
