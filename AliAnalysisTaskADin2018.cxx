@@ -3343,6 +3343,14 @@ void AliAnalysisTaskADin2018::UserExec(Option_t *)
       PostData(1, fOutputList);
       return;
   }
+
+  // TRACKLETS
+  if( fTracklets > 0 ) {
+      fCounterH->Fill(130);
+      PostData(1, fOutputList);
+      return;
+  }
+
   //_______________________________
   if(fV0ADecision != 0 && fADADecision != 0) {
       fCounterH->Fill(110);
