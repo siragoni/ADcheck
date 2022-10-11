@@ -47,10 +47,13 @@ void DrawSuppressionFactor(){
   Double_t SuppressionFactors[9]     = { 0,0,0, 0,0,0, 0,0,0 };
   Double_t SuppressionFactors_sta[9] = { 0,0,0, 0,0,0, 0,0,0 };
   Double_t SuppressionFactors_sys[9] = { 0,0,0, 0,0,0, 0,0,0 };
+  Double_t IA_sys[9]                 = { 0.1, 0.1, 0.1,  0.1, 0.1, 0.1,  0.1, 0.1, 0.1 };
   for (Int_t i = 0; i < 9; i++) {
     SuppressionFactors[i]     = TMath::Sqrt(ALICE_photo_sig[i]/IA[i]);
     SuppressionFactors_sta[i] = ALICE_photo_sta[i]/(2.*TMath::Sqrt(ALICE_photo_sig[i]*IA[i]));
     SuppressionFactors_sys[i] = ALICE_photo_sys[i]/(2.*TMath::Sqrt(ALICE_photo_sig[i]*IA[i]));
+    // IA_sys[i]                 = IA_sys[i]*IA[i];
+    SuppressionFactors_sys[i] = TMath::Sqrt(SuppressionFactors_sys[i]*SuppressionFactors_sys[i] + 0.25*SuppressionFactors[i]*SuppressionFactors[i]*IA_sys[i]*IA_sys[i]);
     cout << "Supp +/- Stat. +/- Sys. = " << SuppressionFactors[i] << " +/- " << SuppressionFactors_sta[i] << " +/- " << SuppressionFactors_sys[i] << endl;
   }
   SuppressionFactor2  = new TGraphErrors(9, ALICE_photo_W, SuppressionFactors, 0, SuppressionFactors_sta);

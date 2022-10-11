@@ -42,7 +42,7 @@ using namespace std;
 
 // local headers
 // #include "alice.h"
-#include "alice2.h"
+#include "alice2-twoequations.h"
 
 
 
@@ -301,8 +301,11 @@ int main(void) {
   aliceData->Draw("psame");
 
 
-  // TGraphErrors *STARLIGHTpred2      = alic->getStarlight();
-  // STARLIGHTpred2->Draw("psame");
+  TGraphErrors *onon_xnon      = alic->get_onon_xnon();
+  onon_xnon->Draw("psame");
+  TGraphErrors *onon_xnxn      = alic->get_onon_xnxn();
+  onon_xnxn->Draw("psame");
+
 
 
 
@@ -352,8 +355,8 @@ int main(void) {
   leg1->SetBorderSize(0);
   leg1->SetTextSize(siz-0.005);
   leg1->AddEntry(aliceData,"ALICE data","p");
-  // leg1->AddEntry(STARLIGHTpred,"STARlight","p");
-  leg1->AddEntry(predSL,"STARlight","l");
+  leg1->AddEntry(onon_xnon,"onon+xnon","p");
+  leg1->AddEntry(onon_xnxn,"onon+xnxn","p");
   // leg1->AddEntry(STARLIGHTpred2,"Impulse Approximation","p");
   leg1->AddEntry(predIA,"Impulse Approximation","l");
   leg1->AddEntry(predHS,"Hot-spot Model (PRC97 (2018) 024901)","l");
@@ -377,7 +380,7 @@ int main(void) {
   //put vertical scale atop the models
   gPad->RedrawAxis("Y");
 
-  c1->SaveAs("fit.pdf");
+  c1->SaveAs("fit-twoequations.pdf");
 
   return 0;
 
